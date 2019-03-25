@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  # run docker-compose down if you change any of the PG environment variables
+  web:
+    build: . # location of Dockerfile
+    command: nodemon /usr/app/src/backend/server
+    depends_on:
+      - "db"
+    ports:
+      - "8000:8000"
+      - "3000:3000"
+
+    # these are the links from your local machine:docker files
+    # so that you can access them without restarting docker
+    volumes:
+      - ./src/:/usr/app/src/
+      - ./package.json:/usr/app/package.json
+      - ./package-lock.json:/usr/app/package-lock.json
+
+    # environment variables needed for knex
+    environment:
+      DEV_DB_HOST: db
+      DEV_DB_PORT: 5432
+      DEV_DB_USER: root
+      DEV_DB_PSWD: root
+      DEV_DB_NAME: ollie
+
+    container_name: web_container
+
+
+  db:
+    image: postgres:9.6-alpine
+    ports:
+      - '5431:5432'
+    environment:
+      # these are PG builtin env vars
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: ollie
+
+    container_name: db_container
