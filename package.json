@@ -3,8 +3,16 @@
   "version": "1.0.0",
   "description": "A nice way to take notes",
   "license": "ISC",
-  "author": "",
+  "author": "Mike Cronin",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MostlyFocusedMike/ollie-notes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MostlyFocusedMike/ollie-notes/issues"
+  },
+  "homepage": "https://github.com/MostlyFocusedMike/ollie-notes#readme",
   "scripts": {
     "dc:build": "docker-compose up -d --build",
     "dc:build:web": "docker-compose up -d --build web",
@@ -12,11 +20,10 @@
     "eject": "react-scripts eject",
     "in:db": "docker-compose exec db psql ollie root",
     "in:web": "docker-compose exec web bash",
-    "kickoff": "npm install && npm run dc:build && npm run webpack:watch",
+    "kickoff": "./scripts/kickoff.sh",
     "log:web": "docker-compose logs -f web",
-    "migrate:latest": "docker-compose exec web npx knex migrate:latest",
-    "migrate:make": "npx knex migrate:make",
-    "seed:run": "docker-compose exec web npx knex seed:run",
+    "migrate": "docker-compose exec web npx knex migrate:latest",
+    "seed": "docker-compose exec web npx knex seed:run",
     "start": "docker-compose up -d && npm webpack:watch",
     "stop": "docker-compose stop",
     "test": "echo \"Error: no test specified\" && exit 1",
