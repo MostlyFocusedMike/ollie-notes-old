@@ -1,4 +1,5 @@
-const User = require('../models/User');
+const Constants = require('../constants.js');
+const User = require('../models/user');
 
 exports.seed = async (knex) => {
     /* Using objection we can neatly create one file with all our relationships built dynamically */
@@ -14,7 +15,7 @@ exports.seed = async (knex) => {
                 username: '2b_real_not',
                 avatar: 'https://www.catster.com/wp-content/uploads/2015/06/6becb852b27e1d80fbd03048dfb377a5_1273011771.jpg',
                 email: 'mostlyfocusedmike+fakeuser1@gmail.com',
-                oauth_type: 'github',
+                oauth_type: Constants.OAUTH_TYPES.GITHUB,
                 notes: [
                     {
                         title: '1st note titlerino',
@@ -33,7 +34,7 @@ exports.seed = async (knex) => {
                 username: 'fake_123',
                 avatar: 'https://www.petbucket.com/resources/18/160536/picture/2F/85854511.jpg',
                 email: 'mostlyfocusedmike+fakeuser2@gmail.com',
-                oauth_type: 'github',
+                oauth_type: Constants.OAUTH_TYPES.GITHUB,
                 notes: [
                     {
                         title: '3rd note title is in the house',
