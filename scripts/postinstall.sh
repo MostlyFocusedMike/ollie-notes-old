@@ -1,0 +1,11 @@
+#!/bin/bash
+echo "---------------------------------"
+echo "|             HEY!              |"
+echo "|     DON'T FORGET TO BUILD     |"
+echo "|    YOUR WEB CONTAINER NOW!    |"
+echo "|                               |"
+echo "|      npm run dc:build:web     |"
+echo "|                               |"
+echo "|  (unless this is popping up)  |"
+echo "|  (during the kickoff script)  |"
+echo "---------------------------------"
