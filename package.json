@@ -4,7 +4,7 @@
   "description": "A nice way to take notes",
   "license": "ISC",
   "author": "Mike Cronin",
-  "main": "index.js",
+  "main": "src/backend/server/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MostlyFocusedMike/ollie-notes.git"
