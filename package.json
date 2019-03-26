@@ -16,7 +16,7 @@
     "log:web": "docker-compose logs -f web",
     "migrate:latest": "docker-compose exec web npx knex migrate:latest",
     "migrate:make": "npx knex migrate:make",
-    "seed:latest": "docker-compose exec web npx knex migrate:latest",
+    "seed:run": "docker-compose exec web npx knex seed:run",
     "start": "docker-compose up -d && npm webpack:watch",
     "stop": "docker-compose stop",
     "test": "echo \"Error: no test specified\" && exit 1",

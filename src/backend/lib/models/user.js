@@ -7,7 +7,7 @@ Model.knex(knex);
 
 class User extends Model {
     static get tableName() {
-        return 'owners';
+        return 'users';
     }
 
     static get jsonSchema() {
@@ -22,6 +22,7 @@ class User extends Model {
             properties: {
                 id: { type: 'integer' },
                 github_id: { type: 'integer' },
+                name: { type: 'string' },
                 username: { type: 'string' },
                 avatar: { type: 'string' },
                 email: { type: 'string' },
