@@ -1,7 +1,7 @@
 exports.up = (knex, Promise) => {
     return knex.schema.createTable('users', (table) => {
         table.increments().primary();
-        table.string('github_id').notNullable();
+        table.string('github_id');
         table.string('username').notNullable();
         table.string('avatar').defaultTo('https://cdn-images-1.medium.com/fit/c/200/200/1*_fyQhg7HIyLJbw-tdFBxXA.png');
         table.string('email').notNullable();
