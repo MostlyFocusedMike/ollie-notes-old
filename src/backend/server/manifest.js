@@ -1,11 +1,8 @@
-const Dotenv = require('dotenv');
+require('dotenv').config();
 const Confidence = require('confidence');
 const Toys = require('toys');
 const Path = require('path');
 const Inert = require('inert');
-
-// Pull .env into process.env
-Dotenv.config();
 
 // Glue manifest as a confidence store
 module.exports = new Confidence.Store({
@@ -35,6 +32,10 @@ module.exports = new Confidence.Store({
     register: {
         plugins: [
             Inert, // register all plugins before Main
+            {
+                plugin: './plugins/oauth',
+                options: {},
+            },
             {
                 plugin: '../lib', // Main plugin
                 options: {},

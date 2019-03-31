@@ -41,6 +41,7 @@
     "extends": "react-app"
   },
   "dependencies": {
+    "bell": "^10.0.0",
     "boom": "7.x.x",
     "confidence": "4.x.x",
     "dotenv": "6.x.x",
