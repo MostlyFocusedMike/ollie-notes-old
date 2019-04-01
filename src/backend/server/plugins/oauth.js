@@ -9,10 +9,9 @@ module.exports = {
         */
         if (process.env.USE_SEED_USERS) {
             Bell.simulate(async (request) => {
-                const seedUser = await User
+                const [seedUser] = await User
                     .query()
-                    .where('github_id', '=', process.env.SEED_USER_ID);
-                // const seedUser = server.app.users.find(user => user.id === Number(process.env.SEED_USER_ID));
+                    .where('id', '=', 2);
                 console.log('seedUser: ', seedUser);
                 return {
                     provider: 'github',
@@ -22,6 +21,7 @@ module.exports = {
                     expiresIn: undefined,
                     profile: {
                         id: seedUser.id,
+                        name: seedUser.name,
                         username: seedUser.username,
                         displayName: seedUser.name,
                         email: seedUser.email,

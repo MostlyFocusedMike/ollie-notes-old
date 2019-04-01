@@ -6,7 +6,7 @@ module.exports = {
         handler: (request, h) => {
             /* logout by clearing the cookie */
             request.cookieAuth.clear();
-            return h.redirect('/');
+            return h.redirect('/login');
         },
     },
 };

@@ -1,6 +1,7 @@
 const Path = require('path');
 const Glue = require('glue');
 const Manifest = require('./manifest');
+const User = require('../models/user');
 
 exports.deployment = async (start) => {
     const manifest = Manifest.get('/');
@@ -20,6 +21,10 @@ exports.deployment = async (start) => {
         isCached: process.env.NODE_ENV === 'production',
         defaultExtension: 'html',
     });
+
+    server.app.Database = {
+        User,
+    };
 
     if (!start) return server;
 

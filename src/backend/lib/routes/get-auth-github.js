@@ -1,26 +1,34 @@
+const Constants = require('../constants.js');
+
 module.exports = {
     method: 'GET',
     path: '/auth/github',
     options: {
         auth: 'github',
-        handler: (request, h) => {
+        handler: async (request, h) => {
             if (request.auth.isAuthenticated) {
-                const user = request.auth.credentials.profile;
+                const { profile } = request.auth.credentials;
+                const { User } = request.server.app.Database;
                 const data = {
-                    name: user.displayName,
-                    username: user.username,
-                    avatar: user.raw.avatar_url,
-                    email: user.email,
+                    github_id: profile.id,
+                    name: profile.displayName,
+                    username: profile.username,
+                    avatar: profile.raw.avatar_url,
+                    email: profile.email,
+                    oauth_type: Constants.OAUTH_TYPES.GITHUB,
                 };
 
-                // fake a create user action by loading data into memory
-                if (!request.server.app.users[user.username]) {
-                    request.server.app.users[user.username] = data;
-                }
+                const [user] = await User
+                    .query()
+                    .where('github_id', '=', data.github_id);
 
-                console.log('request.auth ', request.auth);
-                request.cookieAuth.set({ username: user.username });
-                return h.redirect(`/users/${user.username}`);
+                if (!user) {
+                    await User
+                        .query()
+                        .insert(data);
+                }
+                request.cookieAuth.set({ username: data.username });
+                return h.redirect(`/users/${data.username}`);
             }
 
             return h.view('login', {

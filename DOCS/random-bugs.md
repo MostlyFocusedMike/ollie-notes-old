@@ -50,3 +50,14 @@ or why it only occurs sometimes and not others.
 I just loaded it as a devdependency and moved on
 
 -------------------------------------------------------------------------------
+
+ > ## error: duplicate key value violates unique constraint "users_pkey"
+ This error kept popping up inconsistently. Most likely, when the seeds were run
+ they were causing problems, since I was specifying the actual `id` field,
+ even though it wanted to auto increment them. I noticed the error didn't happen
+ when I ran the create new user code, but never ran the seed file first.
+
+ ### _**The Fix**_
+ I removed the `id` field and the problem went away.
+
+-------------------------------------------------------------------------------

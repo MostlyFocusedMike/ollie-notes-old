@@ -4,7 +4,6 @@ const register = async (server, options) => {
     await server.register(hapiAuthCookie);
 
     server.auth.strategy('session', 'cookie', {
-        redirectTo: '/', // redirect of failed login
         cookie: { // @TODO note how this is an update from hapi-auth-cookie v9 https://github.com/hapijs/hapi-auth-cookie/issues/209
             name: 'session', // name of the cookie
             password: process.env.COOKIE_PSWD, // needed for cookie encoding
@@ -12,10 +11,13 @@ const register = async (server, options) => {
         },
         validateFunc: async (request, session) => {
             /* validate the existing session on every request */
-            console.log('session from validateFunc: ', session);
-            const user = request.server.app.users[session.username];
-            if (!user) return { valid: false };
-            return { valid: true }; // can also send credentials property
+            console.log('session: ', session);
+            const [user] = await request.server.app.Database.User
+                .query()
+                .where('username', '=', session.username);
+
+            if (!user) return { pach: 'ok' };
+            return { good: 'fling' }; // can also send credentials property
         },
     });
 };

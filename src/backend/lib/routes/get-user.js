@@ -6,13 +6,16 @@ module.exports = {
             strategy: 'session',
             mode: 'try',
         },
-        handler: (request, h) => {
-            // when anyone tries to visit a non-existant users page, nothing to do with auth
-            const user = request.server.app.users[request.params.username];
-            if (!user) {
-                return h.redirect('/');
-            }
-            console.log('request.auth on profile: ', request.auth);
+        handler: async (request, h) => {
+            const { User } = request.server.app.Database;
+            const [user] = await User
+                .query()
+                .where('username', '=', request.params.username);
+
+            const cookie = request.state.session;
+            console.log('cookie: ', cookie);
+            console.log('user: ', user);
+            if (!user) { return h.redirect('/'); } // when trying to visit non-existant users page. not about auth
             const context = {
                 name: user.name,
                 username: user.username,
@@ -20,7 +23,10 @@ module.exports = {
                 isUser: false,
             };
 
+            console.log('request.auth.isAuthenticated: ', request.auth.isAuthenticated);
+
             if (request.auth.isAuthenticated && request.auth.credentials.username === request.params.username) {
+                console.log('hit: ');
                 context.isUser = true;
             }
 

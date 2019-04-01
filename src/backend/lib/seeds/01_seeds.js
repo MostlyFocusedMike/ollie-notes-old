@@ -1,5 +1,5 @@
 const Constants = require('../constants.js');
-const User = require('../models/user');
+const User = require('../../models/user');
 
 exports.seed = async (knex) => {
     /* Using objection we can neatly create one file with all our relationships built dynamically */
@@ -9,7 +9,6 @@ exports.seed = async (knex) => {
         .query()
         .insertGraph([
             {
-                id: 1,
                 github_id: 11111111, // github id's are 8 digit ints
                 name: 'Mr. Fakerino',
                 username: '2b_real_not',
@@ -28,7 +27,6 @@ exports.seed = async (knex) => {
                 ],
             },
             {
-                id: 2,
                 github_id: 22222222,
                 name: "Noreal O'Fakerson",
                 username: 'fake_123',
@@ -38,7 +36,7 @@ exports.seed = async (knex) => {
                 notes: [
                     {
                         title: '3rd note title is in the house',
-                        text: "# I am the second user's beloved second note",
+                        text: "# I am the second user's beloved first note",
                     },
                 ],
             },
