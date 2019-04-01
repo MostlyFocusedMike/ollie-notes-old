@@ -37,13 +37,13 @@ module.exports = new Confidence.Store({
                 options: {},
             },
             {
+                plugin: './plugins/session',
+            },
+            {
                 plugin: './plugins/oauth',
                 options: {},
             },
-            {
-                plugin: './plugins/session',
-                options: {},
-            },
+
             {
                 plugin: '../lib', // Main plugin
                 options: {},
