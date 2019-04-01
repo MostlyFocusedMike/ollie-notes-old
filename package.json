@@ -42,10 +42,12 @@
   },
   "dependencies": {
     "bell": "^10.0.0",
+    "hapi": "^18.1.0",
     "boom": "7.x.x",
     "confidence": "4.x.x",
     "dotenv": "6.x.x",
-    "glue": "5.x.x",
+    "glue": "6.x.x",
+    "hapi-auth-cookie": "^10.0.0",
     "haute-couture": "3.x.x",
     "inert": "^5.1.2",
     "joi": "14.x.x",
@@ -66,7 +68,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "hpal-debug": "1.x.x",
-    "hapi": "^18.1.0",
     "bossy": "^4.0.3"
   }
 }
