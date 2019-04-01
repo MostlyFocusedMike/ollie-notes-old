@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/MostlyFocusedMike/ollie-notes/issues"
   },
-  "homepage": "https://github.com/MostlyFocusedMike/ollie-notes#readme",
+  "homepage": "https://ollienotes.com",
   "scripts": {
     "dc:build": "docker-compose up -d --build",
     "dc:build:web": "docker-compose up -d --build web",
@@ -24,7 +24,7 @@
     "log:web": "docker-compose logs -f web",
     "migrate": "docker-compose exec web npx knex migrate:latest",
     "seed": "docker-compose exec web npx knex seed:run",
-    "start": "docker-compose up -d && npm webpack:watch",
+    "start": "docker-compose up -d && npm run webpack:watch",
     "stop": "docker-compose stop",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack:build": "docker-compose exec web npx react-scripts build",
