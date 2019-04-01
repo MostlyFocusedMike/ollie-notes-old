@@ -1,3 +1,4 @@
+const Path = require('path');
 const Glue = require('glue');
 const Manifest = require('./manifest');
 
@@ -6,6 +7,19 @@ exports.deployment = async (start) => {
     const server = await Glue.compose(manifest, { relativeTo: __dirname });
 
     await server.initialize();
+
+    server.views({
+        engines: {
+            html: {
+                module: require('handlebars'),
+                layout: true,
+            },
+        },
+        relativeTo: Path.join(__dirname, '..', 'lib', 'templates'),
+        path: '.',
+        isCached: process.env.NODE_ENV === 'production',
+        defaultExtension: 'html',
+    });
 
     if (!start) return server;
 

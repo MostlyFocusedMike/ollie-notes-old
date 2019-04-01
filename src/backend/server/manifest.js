@@ -33,6 +33,10 @@ module.exports = new Confidence.Store({
         plugins: [
             Inert, // register all plugins before Main
             {
+                plugin: 'vision',
+                options: {},
+            },
+            {
                 plugin: './plugins/oauth',
                 options: {},
             },
