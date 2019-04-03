@@ -13,11 +13,11 @@ class User extends Model {
     static get jsonSchema() {
         return {
             type: 'object',
-            // required: [
-            //     'username',
-            //     'email',
-            //     'oauth_type',
-            // ],
+            required: [
+                'username',
+                'email',
+                'oauth_type',
+            ],
 
             properties: {
                 id: { type: 'integer' },
@@ -44,6 +44,16 @@ class User extends Model {
                 },
             },
         };
+    }
+
+    static async findOrCreateGitHub(profile) {
+        let [user] = await this.query().where('github_id', '=', profile.github_id);
+        if (!user) user = await this.query().insert(profile);
+        return user;
+    }
+
+    static async findBy(column, value) {
+        return this.query().where(column, '=', value);
     }
 }
 

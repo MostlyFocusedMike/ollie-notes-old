@@ -1,5 +1,6 @@
 const Path = require('path');
 const Glue = require('glue');
+const Handlebars = require('handlebars');
 const Manifest = require('./manifest');
 const User = require('../models/user');
 
@@ -9,10 +10,11 @@ exports.deployment = async (start) => {
 
     await server.initialize();
 
+    // temporary to test auth quickly
     server.views({
         engines: {
             html: {
-                module: require('handlebars'),
+                module: Handlebars,
                 layout: true,
             },
         },

@@ -2,9 +2,10 @@ module.exports = {
     method: 'POST',
     path: '/logout',
     options: {
+        tags: ['auth'],
+        description: 'Logout page that clears the session cookie',
         auth: 'session',
         handler: (request, h) => {
-            /* logout by clearing the cookie */
             request.cookieAuth.clear();
             return h.redirect('/login');
         },

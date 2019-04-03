@@ -5,11 +5,13 @@ module.exports = {
     path: '/auth/github',
     options: {
         auth: 'github',
+        tags: ['auth'],
+        description: 'The callback url for GitHub OAuth',
         handler: async (request, h) => {
             if (request.auth.isAuthenticated) {
+                // the profile info sent from GitHub
                 const { profile } = request.auth.credentials;
-                const { User } = request.server.app.Database;
-                const data = {
+                const userProfile = {
                     github_id: profile.id,
                     name: profile.displayName,
                     username: profile.username,
@@ -18,17 +20,11 @@ module.exports = {
                     oauth_type: Constants.OAUTH_TYPES.GITHUB,
                 };
 
-                const [user] = await User
-                    .query()
-                    .where('github_id', '=', data.github_id);
+                const userDB = request.server.app.Database.User;
+                const user = await userDB.findOrCreateGitHub(userProfile);
 
-                if (!user) {
-                    await User
-                        .query()
-                        .insert(data);
-                }
-                request.cookieAuth.set({ username: data.username });
-                return h.redirect(`/users/${data.username}`);
+                request.cookieAuth.set({ username: user.username });
+                return h.redirect(`/users/${userProfile.username}`);
             }
 
             return h.view('login', {

@@ -12,7 +12,10 @@ class Note extends Model {
     static get jsonSchema() {
         return {
             type: 'object',
-            required: ['title'],
+            required: [
+                'title',
+                'user_id',
+            ],
 
             properties: {
                 id: { type: 'integer' },
