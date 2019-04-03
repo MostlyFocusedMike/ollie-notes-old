@@ -9,6 +9,7 @@ WORKDIR /usr/app
 
 # there will be a src folder inside src/app as well
 # this copies everything you need into from local into your docker container to start
+COPY ./.env /usr/app/
 COPY ./src /usr/app/src/
 COPY ./public /usr/app/public/
 COPY ./package*.json /usr/app/

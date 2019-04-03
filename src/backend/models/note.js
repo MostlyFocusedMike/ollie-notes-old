@@ -1,10 +1,6 @@
-const { Model } = require('objection');
-const knex = require('../knex');
+const BaseModel = require('./BaseModel');
 
-// Give the knex object to objection.
-Model.knex(knex);
-
-class Note extends Model {
+class Note extends BaseModel {
     static get tableName() {
         return 'notes';
     }
@@ -12,7 +8,10 @@ class Note extends Model {
     static get jsonSchema() {
         return {
             type: 'object',
-            required: ['title'],
+            required: [
+                'title',
+                'user_id',
+            ],
 
             properties: {
                 id: { type: 'integer' },

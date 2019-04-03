@@ -1,5 +1,5 @@
 const Constants = require('../constants.js');
-const User = require('../models/user');
+const User = require('../../models/User');
 
 exports.seed = async (knex) => {
     /* Using objection we can neatly create one file with all our relationships built dynamically */
@@ -9,10 +9,9 @@ exports.seed = async (knex) => {
         .query()
         .insertGraph([
             {
-                id: 1,
                 github_id: 11111111, // github id's are 8 digit ints
                 name: 'Mr. Fakerino',
-                username: '2b_real_not',
+                username: 'fake_1',
                 avatar: 'https://www.catster.com/wp-content/uploads/2015/06/6becb852b27e1d80fbd03048dfb377a5_1273011771.jpg',
                 email: 'mostlyfocusedmike+fakeuser1@gmail.com',
                 oauth_type: Constants.OAUTH_TYPES.GITHUB,
@@ -28,17 +27,16 @@ exports.seed = async (knex) => {
                 ],
             },
             {
-                id: 2,
                 github_id: 22222222,
                 name: "Noreal O'Fakerson",
-                username: 'fake_123',
+                username: 'fake_2',
                 avatar: 'https://www.petbucket.com/resources/18/160536/picture/2F/85854511.jpg',
                 email: 'mostlyfocusedmike+fakeuser2@gmail.com',
                 oauth_type: Constants.OAUTH_TYPES.GITHUB,
                 notes: [
                     {
                         title: '3rd note title is in the house',
-                        text: "# I am the second user's beloved second note",
+                        text: "# I am the second user's beloved first note",
                     },
                 ],
             },

@@ -1,10 +1,14 @@
 module.exports = {
     method: 'GET',
     path: '/{param*}',
-    handler: {
-        directory: {
-            path: '.',
-            redirectToSlash: true,
+    options: {
+        tags: ['static'],
+        description: 'Static asset delivery diractory',
+        handler: {
+            directory: {
+                path: '.',
+                redirectToSlash: true,
+            },
         },
     },
 };
