@@ -11,7 +11,7 @@ exports.seed = async (knex) => {
             {
                 github_id: 11111111, // github id's are 8 digit ints
                 name: 'Mr. Fakerino',
-                username: '2b_real_not',
+                username: 'fake_1',
                 avatar: 'https://www.catster.com/wp-content/uploads/2015/06/6becb852b27e1d80fbd03048dfb377a5_1273011771.jpg',
                 email: 'mostlyfocusedmike+fakeuser1@gmail.com',
                 oauth_type: Constants.OAUTH_TYPES.GITHUB,
@@ -29,7 +29,7 @@ exports.seed = async (knex) => {
             {
                 github_id: 22222222,
                 name: "Noreal O'Fakerson",
-                username: 'fake_123',
+                username: 'fake_2',
                 avatar: 'https://www.petbucket.com/resources/18/160536/picture/2F/85854511.jpg',
                 email: 'mostlyfocusedmike+fakeuser2@gmail.com',
                 oauth_type: Constants.OAUTH_TYPES.GITHUB,
