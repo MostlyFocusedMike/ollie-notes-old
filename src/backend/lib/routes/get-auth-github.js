@@ -8,9 +8,14 @@ module.exports = {
         tags: ['auth'],
         description: 'The callback url for GitHub OAuth',
         handler: async (request, h) => {
-            if (request.auth.isAuthenticated) {
+            const {
+                auth: { isAuthenticated, credentials: { profile } },
+                server: { app: { Database: { User } } },
+                cookieAuth,
+            } = request;
+
+            if (isAuthenticated) {
                 // the profile info sent from GitHub
-                const { profile } = request.auth.credentials;
                 const userProfile = {
                     github_id: profile.id,
                     name: profile.displayName,
@@ -20,10 +25,9 @@ module.exports = {
                     oauth_type: Constants.OAUTH_TYPES.GITHUB,
                 };
 
-                const userDB = request.server.app.Database.User;
-                const user = await userDB.findOrCreateGitHub(userProfile);
+                const user = await User.findOrCreateGitHub(userProfile);
 
-                request.cookieAuth.set({ username: user.username });
+                cookieAuth.set({ username: user.username });
                 return h.redirect(`/users/${userProfile.username}`);
             }
 

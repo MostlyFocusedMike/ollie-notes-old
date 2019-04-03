@@ -1,11 +1,7 @@
 const Path = require('path');
-const { Model } = require('objection');
-const knex = require('../knex');
+const BaseModel = require('./BaseModel');
 
-// Give the knex object to objection.
-Model.knex(knex);
-
-class User extends Model {
+class User extends BaseModel {
     static get tableName() {
         return 'users';
     }
@@ -36,7 +32,7 @@ class User extends Model {
     static get relationMappings() {
         return {
             notes: {
-                relation: Model.HasManyRelation,
+                relation: BaseModel.HasManyRelation,
                 modelClass: Path.join(__dirname, 'note'),
                 join: {
                     from: 'users.id',
@@ -52,8 +48,12 @@ class User extends Model {
         return user;
     }
 
-    static async findBy(column, value) {
-        return this.query().where(column, '=', value);
+    isLoggedIn(request) {
+        const {
+            auth: { isAuthenticated, credentials },
+            params: { username },
+        } = request;
+        return isAuthenticated && credentials.username === username;
     }
 }
 

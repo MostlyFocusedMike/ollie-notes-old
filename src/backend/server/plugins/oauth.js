@@ -1,5 +1,5 @@
 const Bell = require('bell');
-const User = require('../../models/user');
+const User = require('../../models/User');
 
 module.exports = {
     name: 'oauth',

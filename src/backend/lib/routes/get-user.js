@@ -9,18 +9,20 @@ module.exports = {
             mode: 'try',
         },
         handler: async (request, h) => {
-            const { params: { username }, auth: { isAuthenticated, credentials } } = request;
-            const [user] = await request.server.app.Database.User.findBy('username', username);
-            if (!user) { return h.redirect('/'); } // when trying to visit non-existant users page. not about auth
+            const {
+                params: { username },
+                server: { app: { Database: { User } } },
+            } = request;
+
+            const [user] = await User.where('username', username);
+            if (!user) return h.redirect('/'); // when trying to visit non-existant users page. not about auth
 
             const context = {
                 name: user.name,
                 username: user.username,
                 avatar: user.avatar,
             };
-
-            if (isAuthenticated && credentials.username === username) context.isUser = true;
-
+            if (user.isLoggedIn(request)) context.isUser = true;
             return h.view('profile', context);
         },
     },

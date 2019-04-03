@@ -2,7 +2,7 @@ const Path = require('path');
 const Glue = require('glue');
 const Handlebars = require('handlebars');
 const Manifest = require('./manifest');
-const User = require('../models/user');
+const User = require('../models/User');
 
 exports.deployment = async (start) => {
     const manifest = Manifest.get('/');
@@ -10,7 +10,6 @@ exports.deployment = async (start) => {
 
     await server.initialize();
 
-    // temporary to test auth quickly
     server.views({
         engines: {
             html: {

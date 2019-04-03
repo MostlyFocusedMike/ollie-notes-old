@@ -1,5 +1,5 @@
 const Constants = require('../constants.js');
-const User = require('../../models/user');
+const User = require('../../models/User');
 
 exports.seed = async (knex) => {
     /* Using objection we can neatly create one file with all our relationships built dynamically */
