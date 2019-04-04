@@ -1,9 +1,7 @@
-const hapiAuthCookie = require('hapi-auth-cookie');
-
-const register = async (server, options) => {
-    await server.register(hapiAuthCookie);
-
-    server.auth.strategy('session', 'cookie', {
+module.exports = {
+    // the strategy name is the file name thanks to Haute
+    scheme: 'cookie',
+    options: {
         password: process.env.COOKIE_PSWD, // needed for cookie encoding
         isSecure: process.env.NODE_ENV === 'production', // send over http in local
         redirectTo: '/', // redirect of failed login
@@ -17,12 +15,5 @@ const register = async (server, options) => {
             if (!user) return { valid: false };
             return { valid: true }; // can also send credentials property
         },
-    });
-};
-
-exports.plugin = {
-    register,
-    name: 'session',
-    version: '1.0.0',
-    once: true,
+    },
 };

@@ -2,7 +2,7 @@ const Path = require('path');
 const Glue = require('glue');
 const Handlebars = require('handlebars');
 const Manifest = require('./manifest');
-const User = require('../models/User');
+const User = require('../models/user');
 
 exports.deployment = async (start) => {
     const manifest = Manifest.get('/');

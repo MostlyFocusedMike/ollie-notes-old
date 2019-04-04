@@ -37,13 +37,9 @@ module.exports = new Confidence.Store({
                 options: {},
             },
             {
-                plugin: './plugins/session',
-            },
-            {
-                plugin: './plugins/oauth',
+                plugin: 'hapi-auth-cookie',
                 options: {},
             },
-
             {
                 plugin: '../lib', // Main plugin
                 options: {},
