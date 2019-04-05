@@ -2,7 +2,7 @@ require('dotenv').config();
 const Confidence = require('confidence');
 const Toys = require('toys');
 const Path = require('path');
-const Inert = require('inert');
+const Constants = require('../constants');
 
 // Glue manifest as a confidence store
 module.exports = new Confidence.Store({
@@ -46,8 +46,30 @@ module.exports = new Confidence.Store({
                         title: 'Ollie Notes Api Routes',
                         version: '0.0.1',
                     },
+                    tags: [ // lets us decide the display order of tags
+                        {
+                            name: Constants.TAGS.USERS,
+                        },
+                        {
+                            name: Constants.TAGS.NOTES,
+                        },
+                        {
+                            name: Constants.TAGS.AUTH,
+                        },
+                        {
+                            name: Constants.TAGS.STATIC,
+                        },
+                        {
+                            name: Constants.TAGS.UTIL,
+                            description: 'Miscellaneous, but useful'
+                        },
+                        {
+                            name: Constants.TAGS.TEMPO,
+                            description: 'For quick development',
+                        },
+                    ],
                     grouping: 'tags',
-                    swaggerUIPath: '/routes',
+                    documentationPath: '/swagger',
                 },
             },
             {
