@@ -48,12 +48,32 @@ class User extends BaseModel {
         return user;
     }
 
+    static async allFiltered() {
+        return this.query().select('id', 'github_id', 'name', 'username', 'avatar');
+    }
+
+    static async where(column, value, filter) {
+        return filter
+            ? this.query()
+                .select('id', 'github_id', 'name', 'username', 'avatar', 'email')
+                .where(column, '=', value)
+            : this.query().where(column, '=', value);
+    }
+
     isLoggedIn(request) {
         const {
             auth: { isAuthenticated, credentials },
             params: { username },
         } = request;
         return isAuthenticated && credentials.username === username;
+    }
+
+    async getNotes(filter) {
+        return filter
+            ? this
+                .$relatedQuery('notes')
+                .select('id', 'title', 'text')
+            : this.$relatedQuery('notes');
     }
 }
 

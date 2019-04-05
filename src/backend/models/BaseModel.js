@@ -5,7 +5,7 @@ Model.knex(knex); // Give the knex object to objection.
 
 // Using base class, lets us add generic queries to every model
 class Queries extends Model {
-    static async all() {
+    static async all(filtered) {
         return this.query();
     }
 
@@ -15,10 +15,6 @@ class Queries extends Model {
 
     static async where(column, value) {
         return this.query().where(column, '=', value);
-    }
-
-    async getMany(relationName) {
-        return this.$relatedQuery(relationName);
     }
 }
 

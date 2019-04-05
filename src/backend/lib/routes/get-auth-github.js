@@ -1,11 +1,11 @@
-const Constants = require('../constants.js');
+const Constants = require('../constants');
 
 module.exports = {
     method: 'GET',
     path: '/auth/github',
     options: {
         auth: 'github',
-        tags: ['auth'],
+        tags: ['api', Constants.TAGS.AUTH],
         description: 'The callback url for GitHub OAuth',
         handler: async (request, h) => {
             const {

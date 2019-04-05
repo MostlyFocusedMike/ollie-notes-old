@@ -1,8 +1,10 @@
+const Constants = require('../constants');
+
 module.exports = {
     method: 'POST',
     path: '/logout',
     options: {
-        tags: ['auth'],
+        tags: ['api', Constants.TAGS.AUTH],
         description: 'Logout page that clears the session cookie',
         auth: 'session',
         handler: (request, h) => {

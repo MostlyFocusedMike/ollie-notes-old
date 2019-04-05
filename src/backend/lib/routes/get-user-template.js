@@ -1,9 +1,11 @@
+const Constants = require('../constants');
+
 module.exports = {
     method: 'GET',
-    path: '/api/v1/users/{username}',
+    path: '/users/{username}',
     options: {
-        tags: ['api'],
-        description: 'Get user profile info',
+        tags: ['api', Constants.TAGS.TEMPO],
+        description: 'Get template with user profile info',
         auth: {
             strategy: 'session',
             mode: 'try',
@@ -23,7 +25,7 @@ module.exports = {
                 avatar: user.avatar,
             };
             if (user.isLoggedIn(request)) context.isUser = true;
-            return context;
+            return h.view('profile', context);
         },
     },
 };

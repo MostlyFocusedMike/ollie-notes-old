@@ -24,7 +24,7 @@ module.exports = new Confidence.Store({
             },
         },
         routes: {
-            files: {
+            files: { // configures Inert's starting directory for files
                 relativeTo: Path.join(__dirname, '..', '..', '..', 'build'),
             },
         },
@@ -46,7 +46,8 @@ module.exports = new Confidence.Store({
                         title: 'Ollie Notes Api Routes',
                         version: '0.0.1',
                     },
-                }
+                    grouping: 'tags',
+                },
             },
             {
                 plugin: 'hapi-auth-cookie',
