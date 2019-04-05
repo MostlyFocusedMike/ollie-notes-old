@@ -31,10 +31,22 @@ module.exports = new Confidence.Store({
     },
     register: {
         plugins: [
-            Inert, // register all plugins before Main
+            {
+                plugin: 'inert',
+                options: {},
+            },
             {
                 plugin: 'vision',
                 options: {},
+            },
+            {
+                plugin: 'hapi-swagger',
+                options: {
+                    info: {
+                        title: 'Ollie Notes Api Routes',
+                        version: '0.0.1',
+                    },
+                }
             },
             {
                 plugin: 'hapi-auth-cookie',
