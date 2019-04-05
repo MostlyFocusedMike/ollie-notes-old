@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const Constants = require('../constants');
+const Constants = require('../../constants');
 
 module.exports = {
     method: 'GET',

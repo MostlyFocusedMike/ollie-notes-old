@@ -47,6 +47,7 @@ module.exports = new Confidence.Store({
                         version: '0.0.1',
                     },
                     grouping: 'tags',
+                    swaggerUIPath: '/routes',
                 },
             },
             {

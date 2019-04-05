@@ -3,11 +3,11 @@ module.exports = Object.freeze({
         GITHUB: 'github',
     },
     TAGS: {
-        USERS: 'users',
-        HEALTH: 'health',
-        NOTES: 'notes',
-        AUTH: 'auth',
-        STATIC: 'static',
-        TEMPO: 'temporary',
+        USERS: 'Users',
+        UTIL: 'Utility',
+        NOTES: 'Notes',
+        AUTH: 'Auth',
+        STATIC: 'Static',
+        TEMPO: 'Temporary',
     },
 });
