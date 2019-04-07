@@ -20,7 +20,7 @@ module.exports = {
         systemSummary: 'A nice way to take your coding notes',
     },
     opts: {
-        destination: './docs',
+        destination: './docs/site',
         encoding: 'utf8',
         private: true,
         recurse: true,

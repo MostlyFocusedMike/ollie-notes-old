@@ -2,6 +2,7 @@
 There are strange issues that needed to be written down.
 
 > ## Directory error
+
 When trying to use the directory handler with inert, it failed because inert was
 registered after the main app. For some reason h.file was fine.
 
@@ -44,6 +45,7 @@ npm run webpack:build
 
 -------------------------------------------------------------------------------
 > ## Error: Cannot find module 'bossy'
+
 This shouldn't pop up again, but this would jump out randomly for a while.
 I don't know which package would ever need to use it, it's a CLI parser,
 or why it only occurs sometimes and not others.
@@ -53,13 +55,14 @@ I just loaded it as a devdependency and moved on
 
 -------------------------------------------------------------------------------
 
- > ## error: duplicate key value violates unique constraint "users_pkey"
- This error kept popping up inconsistently. Most likely, when the seeds were run
- they were causing problems, since I was specifying the actual `id` field,
- even though it wanted to auto increment them. I noticed the error didn't happen
- when I ran the create new user code, but never ran the seed file first.
+> ## error: duplicate key value violates unique constraint "users_pkey"
 
- ### _**The Fix**_
- I removed the `id` field and the problem went away.
+This error kept popping up inconsistently. Most likely, when the seeds were run
+they were causing problems, since I was specifying the actual `id` field,
+even though it wanted to auto increment them. I noticed the error didn't happen
+when I ran the create new user code, but never ran the seed file first.
+
+### _**The Fix**_
+I removed the `id` field and the problem went away.
 
 -------------------------------------------------------------------------------

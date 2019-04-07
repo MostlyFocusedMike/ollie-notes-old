@@ -31,7 +31,7 @@
     "webpack:build": "docker-compose exec web npx react-scripts build",
     "webpack:watch": "docker-compose exec web npx react-scripts start",
     "postinstall": "./scripts/postinstall.sh",
-    "docs": "open docs/index.html",
+    "docs": "open docs/site/index.html",
     "docs:make": "jsdoc -c ./jsdocs.conf.js"
   },
   "browserslist": [

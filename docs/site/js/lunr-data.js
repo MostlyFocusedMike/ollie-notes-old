@@ -1,4 +1,4 @@
-{
+window.lunrData = {
   "index": {
     "version": "1.0.0",
     "fields": [
@@ -54,8 +54,8 @@
           "global"
         ],
         "undefined": [
-          "note",
-          "rough",
+          "docker",
+          "tip",
           "tutori"
         ],
         "list_tutorial.html": [
@@ -229,6 +229,16 @@
               }
             }
           },
+          "i": {
+            "docs": {},
+            "p": {
+              "docs": {
+                "undefined": {
+                  "tf": 950
+                }
+              }
+            }
+          },
           "u": {
             "docs": {},
             "t": {
@@ -247,6 +257,19 @@
                         "tf": 635
                       }
                     }
+                  }
+                }
+              }
+            }
+          },
+          "e": {
+            "docs": {},
+            "c": {
+              "docs": {},
+              "h": {
+                "docs": {
+                  "undefined": {
+                    "tf": 633.3333333333334
                   }
                 }
               }
@@ -300,7 +323,7 @@
                   "r": {
                     "docs": {
                       "undefined": {
-                        "tf": 1900
+                        "tf": 950
                       }
                     }
                   }
@@ -332,6 +355,22 @@
             }
           }
         },
+        "h": {
+          "docs": {},
+          "a": {
+            "docs": {},
+            "p": {
+              "docs": {},
+              "i": {
+                "docs": {
+                  "undefined": {
+                    "tf": 950
+                  }
+                }
+              }
+            }
+          }
+        },
         "b": {
           "docs": {},
           "u": {
@@ -340,6 +379,25 @@
               "docs": {
                 "undefined": {
                   "tf": 950
+                }
+              }
+            }
+          }
+        },
+        "s": {
+          "docs": {},
+          "t": {
+            "docs": {},
+            "a": {
+              "docs": {},
+              "c": {
+                "docs": {},
+                "k": {
+                  "docs": {
+                    "undefined": {
+                      "tf": 633.3333333333334
+                    }
+                  }
                 }
               }
             }
@@ -409,7 +467,7 @@
           }
         }
       },
-      "length": 22
+      "length": 30
     },
     "corpusTokens": [
       "avail",
@@ -418,6 +476,7 @@
       "docker",
       "document",
       "global",
+      "hapi",
       "index",
       "list",
       "list:tutori",
@@ -427,7 +486,10 @@
       "random",
       "readm",
       "rough",
+      "stack",
       "take",
+      "tech",
+      "tip",
       "tutori",
       "way"
     ],
@@ -462,10 +524,10 @@
     },
     "undefined": {
       "kind": "tutorial",
-      "title": "rough-notes",
-      "longname": "rough-notes",
-      "name": "rough-notes",
-      "tags": "rough-notes",
+      "title": "Docker Tips",
+      "longname": "docker-tips",
+      "name": "docker-tips",
+      "tags": "docker-tips",
       "summary": "",
       "description": "",
       "body": ""
@@ -482,4 +544,4 @@
       "body": ""
     }
   }
-}
+};
