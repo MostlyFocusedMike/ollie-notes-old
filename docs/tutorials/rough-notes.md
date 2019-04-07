@@ -2,7 +2,8 @@
 - there are so many different ways to do it
 - haute is lib/plugins and it's expecting one of several different object configs
   - it's essentially just exporting the plugins object for `server.register`
-```js
+
+```javascript
 module.exports = {
     plugins: [
         {

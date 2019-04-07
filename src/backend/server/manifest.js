@@ -61,7 +61,7 @@ module.exports = new Confidence.Store({
                         },
                         {
                             name: Constants.TAGS.UTIL,
-                            description: 'Miscellaneous, but useful'
+                            description: 'Miscellaneous, but useful',
                         },
                         {
                             name: Constants.TAGS.TEMPO,

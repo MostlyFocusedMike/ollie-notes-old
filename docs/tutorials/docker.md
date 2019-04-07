@@ -24,7 +24,10 @@ think of all this as just a simple jumping off point, not a full course
 
 # dc down
  - after you're done practicing, use
- <code> dc down<code>
+ ```
+ dc down
+```
+
  to drop the network so you don't just have it floating around, i'm not sure that's mentioned in any of the videos
 
  ### notes I need to process

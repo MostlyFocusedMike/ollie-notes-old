@@ -11,7 +11,9 @@ To get the directory handler to work, I had to register Inert before the main
 lib. This seems like best practice anyway.
 
 --------------------------------------------------------------------
+
 > ## Debug: handler, error ... at exports.File.open (/usr/app/node_modules/inert/lib/fs.js:37:24)
+
 This is a terrible and stupid bug. It will likely never occur again, but I'm noting it here for posterity. This happened whenever I tried to load the home route. The full error is below:
 
 ```

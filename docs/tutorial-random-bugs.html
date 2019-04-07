@@ -1,0 +1,149 @@
+<!-- start:readme.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>random-bugs</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Ollie Notes","systemSummary":"A nice way to take your coding notes","systemLogo":"","systemColor":"","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"","copyright":"FooDoc Copyright © 2016 The contributors to the JSDoc3 and FooDoc projects.","linenums":true,"collapseSymbols":true,"inverseNav":true,"inlineNav":false,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":true,"sort":"linenum, longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":true,"cleverLinks":false,"useLongnameInNav":false,"showInheritedInNav":true};
+			window.DOCLET_TOC_ENABLED = true;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					Ollie Notes
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+								<li class="dropdown">
+									<a href="list_tutorial.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+											<li><a href="tutorial-docker.html">docker</a></li>
+											<li><a href="tutorial-random-bugs.html">random-bugs</a></li>
+											<li><a href="tutorial-rough-notes.html">rough-notes</a></li>
+									</ul>
+								</li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">tutorial</span>
+				<h1><span class="title">random-bugs</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-9 main-content">
+						<ol class="breadcrumb">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="list_tutorial.html">Tutorials</a></li>
+							<li class="active">random-bugs</li>
+						</ol>
+		<section class="tutorial-section">
+			<article><h1>Random Bugs</h1><p>There are strange issues that needed to be written down.</p>
+<blockquote>
+<h2>Directory error</h2><p>When trying to use the directory handler with inert, it failed because inert was
+registered after the main app. For some reason h.file was fine.</p>
+</blockquote>
+<h3><em><strong>The Fix</strong></em></h3><p>To get the directory handler to work, I had to register Inert before the main
+lib. This seems like best practice anyway.</p>
+<hr>
+<blockquote>
+<h2>Debug: handler, error ... at exports.File.open (/usr/app/node_modules/inert/lib/fs.js:37:24)</h2></blockquote>
+<p>This is a terrible and stupid bug. It will likely never occur again, but I'm noting it here for posterity. This happened whenever I tried to load the home route. The full error is below:</p>
+<pre class="prettyprint source"><code>web_container | Debug: handler, error
+web_container |     Error: Not Found
+web_container |     at exports.File.open (/usr/app/node_modules/inert/lib/fs.js:37:24)</code></pre><p>this looks like it's an issue with inert, but actually it's a problem with
+the package.json <code>homepage</code> field.</p>
+<p>Create-react-app build and watch scripts assume that your project is hosted
+at the root of the site. However, at some point this field was autogenerated
+to be:</p>
+<pre class="prettyprint source"><code>&quot;homepage&quot;: &quot;https://github.com/MostlyFocusedMike/ollie-notes#readme&quot;,</code></pre><p>notice that there are now 2 sub pages now. This overrides the 'assumed at root' behaviour, and breaks things. Inert is the one that deals with paths so it's the one that gets affected first. This field is auto updated once a github is attached to a project, I didn't notice it.</p>
+<h3><em><strong>The Fix</strong></em></h3><p>I just changed the homepage to the root it will eventually have, 'https://ollienotes.com.
+Once the field was updated, rebuild with webpack to update it.</p>
+<pre class="prettyprint source"><code>npm run webpack:build</code></pre><hr>
+<blockquote>
+<h2>Error: Cannot find module 'bossy'</h2><p>This shouldn't pop up again, but this would jump out randomly for a while.
+I don't know which package would ever need to use it, it's a CLI parser,
+or why it only occurs sometimes and not others.</p>
+</blockquote>
+<h3><em><strong>The Fix</strong></em></h3><p>I just loaded it as a devdependency and moved on</p>
+<hr>
+<blockquote>
+<h2>error: duplicate key value violates unique constraint &quot;users_pkey&quot;</h2><p> This error kept popping up inconsistently. Most likely, when the seeds were run
+ they were causing problems, since I was specifying the actual <code>id</code> field,
+ even though it wanted to auto increment them. I noticed the error didn't happen
+ when I ran the create new user code, but never ran the seed file first.</p>
+</blockquote>
+<h3><em><strong>The Fix</strong></em></h3><p> I removed the <code>id</code> field and the problem went away.</p>
+<hr></article>
+		</section>
+			</div>
+				<div class="col-md-3 side-content">
+					<nav class="toc hidden-print hidden-sm hidden-xs"></nav>
+				</div>
+		</div>
+	</div>
+	<footer>
+				<div class="copyright">FooDoc Copyright © 2016 The contributors to the JSDoc3 and FooDoc projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 6th Apr 2019 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:readme.hbs -->

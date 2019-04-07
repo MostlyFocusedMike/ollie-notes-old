@@ -30,7 +30,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack:build": "docker-compose exec web npx react-scripts build",
     "webpack:watch": "docker-compose exec web npx react-scripts start",
-    "postinstall": "./scripts/postinstall.sh"
+    "postinstall": "./scripts/postinstall.sh",
+    "docs": "open docs/index.html",
+    "docs:make": "jsdoc -c ./jsdocs.conf.js"
   },
   "browserslist": [
     ">0.2%",
@@ -65,6 +67,8 @@
     "vision": "^5.4.4"
   },
   "devDependencies": {
+    "foodoc": "0.0.9",
+    "bossy": "^4.0.3",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-hapi": "12.x.x",
     "eslint-plugin-hapi": "4.x.x",
@@ -72,6 +76,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "hpal-debug": "1.x.x",
-    "bossy": "^4.0.3"
+    "jsdoc": "^3.5.5"
   }
 }

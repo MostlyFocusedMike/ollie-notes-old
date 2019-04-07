@@ -6,7 +6,7 @@ module.exports = {
     options: {
         tags: ['api', Constants.TAGS.AUTH],
         description: 'Logout page that clears the session cookie',
-        notes: "Be careful, that 'try out' button will actually log you out",
+        notes: "Be careful, that 'try out' button will actually log you out", // swagger note
         auth: 'session',
         handler: (request, h) => {
             request.cookieAuth.clear();
