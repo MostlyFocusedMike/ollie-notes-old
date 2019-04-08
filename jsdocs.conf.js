@@ -12,6 +12,11 @@ module.exports = {
         'plugins/markdown',
     ],
     templates: {
+        default: {
+            staticFiles: {
+                paths: ['./docs/static'],
+            },
+        },
         cleverLinks: false,
         monospaceLinks: true,
         useLongnameInNav: false,
@@ -19,6 +24,7 @@ module.exports = {
         systemName: 'Ollie Notes',
         systemSummary: 'A nice way to take your coding notes',
         systemColor: '#5611A4', // highlights and header BG color
+        search: true,
         navMembers: [
             // these are the defaults for future reference
             // { kind: 'class', title: 'Classes', summary: 'All documented classes.' },
@@ -31,13 +37,9 @@ module.exports = {
             { kind: 'tutorial', title: 'Tutorials And Guides', summary: 'All available tutorials.' },
         ],
         stylesheets: [
-            'css/overide.css',
+            'override.css',
         ],
-        default: {
-            staticFiles: {
-                paths: ['./docs/images'],
-            },
-        },
+
     },
     opts: {
         destination: './docs/site',

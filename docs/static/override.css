@@ -1,0 +1,37 @@
+/* navbar */
+.navbar-inverse {
+    background-color: #121212;
+}
+
+/* navbar main hompage text */
+.navbar-inverse .navbar-brand {
+    color: #DDD;
+}
+
+/* navbar dropdown options */
+li.dropdown a.dropdown-toggle {
+    color: #DDD;
+}
+
+/* jumbotron */
+.page-header {
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+}
+
+/* jumbotron main header */
+.container h1 {
+    margin: 0.25rem;
+}
+
+/* jumbotron summary text */
+.summary p {
+    color: #FFF;
+    margin: 0.25rem;
+    font-style: italic;
+}
+
+/* jumbotron extra text */
+.kind {
+    display: none;
+}
