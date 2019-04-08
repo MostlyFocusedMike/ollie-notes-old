@@ -9,6 +9,9 @@
 
             "getting-started-with-hapi": {
                 "title": "Getting Started with Hapi"
+            },
+            "getting-started-with-jsdoc": {
+                "title": "Getting Started with JSDoc"
             }
         }
     },

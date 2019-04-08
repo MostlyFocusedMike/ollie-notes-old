@@ -13,6 +13,11 @@ li.dropdown a.dropdown-toggle {
     color: #DDD;
 }
 
+/* hiding the search bar until I figure out how it works */
+.navbar-form {
+    display: none;
+}
+
 /* jumbotron */
 .page-header {
     padding-top: 1rem;
