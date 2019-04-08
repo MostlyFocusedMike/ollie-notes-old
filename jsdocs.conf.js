@@ -17,6 +17,9 @@ module.exports = {
                 paths: ['./docs/static'],
             },
         },
+        stylesheets: [
+            'css/override.css', // uses staticFiles
+        ],
         cleverLinks: false,
         monospaceLinks: true,
         useLongnameInNav: false,
@@ -24,6 +27,8 @@ module.exports = {
         systemName: 'Ollie Notes',
         systemSummary: 'A nice way to take your coding notes',
         systemColor: '#5611A4', // highlights and header BG color
+        systemLogo: './docs/ollie.jpg',
+        favicon: './docs/favicon.ico',
         search: true,
         navMembers: [
             // these are the defaults for future reference
@@ -36,10 +41,6 @@ module.exports = {
             // { kind: 'namespace', title: 'Namespaces', summary: 'All documented namespaces.' },
             { kind: 'tutorial', title: 'Tutorials And Guides', summary: 'All available tutorials.' },
         ],
-        stylesheets: [
-            'override.css',
-        ],
-
     },
     opts: {
         destination: './docs/site',
