@@ -1,6 +1,7 @@
 {
     "tech-stack-tips": {
         "title": "Tech Stack Tips",
+        "summary": "Jumping off points for learning the tech in this project",
         "children": {
             "docker-tips": {
                 "title": "Docker Tips"

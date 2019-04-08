@@ -54,12 +54,13 @@ window.lunrData = {
           "global"
         ],
         "undefined": [
-          "docker",
+          "hapi",
           "tip",
           "tutori"
         ],
         "list_tutorial.html": [
           "avail",
+          "guid",
           "list",
           "list:tutori",
           "tutori"
@@ -229,16 +230,6 @@ window.lunrData = {
               }
             }
           },
-          "i": {
-            "docs": {},
-            "p": {
-              "docs": {
-                "undefined": {
-                  "tf": 950
-                }
-              }
-            }
-          },
           "u": {
             "docs": {},
             "t": {
@@ -254,7 +245,7 @@ window.lunrData = {
                       },
                       "list_tutorial.html": {
                         "ref": "list_tutorial.html",
-                        "tf": 635
+                        "tf": 335
                       }
                     }
                   }
@@ -269,8 +260,18 @@ window.lunrData = {
               "h": {
                 "docs": {
                   "undefined": {
-                    "tf": 633.3333333333334
+                    "tf": 647.3333333333334
                   }
+                }
+              }
+            }
+          },
+          "i": {
+            "docs": {},
+            "p": {
+              "docs": {
+                "undefined": {
+                  "tf": 950
                 }
               }
             }
@@ -353,18 +354,16 @@ window.lunrData = {
                 }
               }
             }
-          }
-        },
-        "h": {
-          "docs": {},
-          "a": {
+          },
+          "u": {
             "docs": {},
-            "p": {
+            "i": {
               "docs": {},
-              "i": {
+              "d": {
                 "docs": {
-                  "undefined": {
-                    "tf": 950
+                  "list_tutorial.html": {
+                    "ref": "list_tutorial.html",
+                    "tf": 300
                   }
                 }
               }
@@ -384,39 +383,16 @@ window.lunrData = {
             }
           }
         },
-        "s": {
+        "j": {
           "docs": {},
-          "t": {
+          "u": {
             "docs": {},
-            "a": {
+            "m": {
               "docs": {},
-              "c": {
-                "docs": {},
-                "k": {
-                  "docs": {
-                    "undefined": {
-                      "tf": 633.3333333333334
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "a": {
-          "docs": {},
-          "v": {
-            "docs": {},
-            "a": {
-              "docs": {},
-              "i": {
-                "docs": {},
-                "l": {
-                  "docs": {
-                    "list_tutorial.html": {
-                      "ref": "list_tutorial.html",
-                      "tf": 35
-                    }
+              "p": {
+                "docs": {
+                  "undefined": {
+                    "tf": 14
                   }
                 }
               }
@@ -425,6 +401,22 @@ window.lunrData = {
         },
         "l": {
           "docs": {},
+          "e": {
+            "docs": {},
+            "a": {
+              "docs": {},
+              "r": {
+                "docs": {},
+                "n": {
+                  "docs": {
+                    "undefined": {
+                      "tf": 14
+                    }
+                  }
+                }
+              }
+            }
+          },
           "i": {
             "docs": {},
             "s": {
@@ -465,9 +457,105 @@ window.lunrData = {
               }
             }
           }
+        },
+        "p": {
+          "docs": {},
+          "o": {
+            "docs": {},
+            "i": {
+              "docs": {},
+              "n": {
+                "docs": {},
+                "t": {
+                  "docs": {
+                    "undefined": {
+                      "tf": 14
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "r": {
+            "docs": {},
+            "o": {
+              "docs": {},
+              "j": {
+                "docs": {},
+                "e": {
+                  "docs": {},
+                  "c": {
+                    "docs": {},
+                    "t": {
+                      "docs": {
+                        "undefined": {
+                          "tf": 14
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "s": {
+          "docs": {},
+          "t": {
+            "docs": {},
+            "a": {
+              "docs": {},
+              "c": {
+                "docs": {},
+                "k": {
+                  "docs": {
+                    "undefined": {
+                      "tf": 633.3333333333334
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "h": {
+          "docs": {},
+          "a": {
+            "docs": {},
+            "p": {
+              "docs": {},
+              "i": {
+                "docs": {
+                  "undefined": {
+                    "tf": 950
+                  }
+                }
+              }
+            }
+          }
+        },
+        "a": {
+          "docs": {},
+          "v": {
+            "docs": {},
+            "a": {
+              "docs": {},
+              "i": {
+                "docs": {},
+                "l": {
+                  "docs": {
+                    "list_tutorial.html": {
+                      "ref": "list_tutorial.html",
+                      "tf": 35
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       },
-      "length": 30
+      "length": 35
     },
     "corpusTokens": [
       "avail",
@@ -476,13 +564,18 @@ window.lunrData = {
       "docker",
       "document",
       "global",
+      "guid",
       "hapi",
       "index",
+      "jump",
+      "learn",
       "list",
       "list:tutori",
       "nice",
       "note",
       "olli",
+      "point",
+      "project",
       "random",
       "readm",
       "rough",
@@ -524,10 +617,10 @@ window.lunrData = {
     },
     "undefined": {
       "kind": "tutorial",
-      "title": "Docker Tips",
-      "longname": "docker-tips",
-      "name": "docker-tips",
-      "tags": "docker-tips",
+      "title": "Hapi Tips",
+      "longname": "hapi-tips",
+      "name": "hapi-tips",
+      "tags": "hapi-tips",
       "summary": "",
       "description": "",
       "body": ""
@@ -535,9 +628,9 @@ window.lunrData = {
     "list_tutorial.html": {
       "id": "list_tutorial.html",
       "kind": "list",
-      "title": "Tutorials",
+      "title": "Tutorials And Guides",
       "longname": "list:tutorial",
-      "name": "Tutorials",
+      "name": "Tutorials And Guides",
       "tags": "list:tutorial",
       "summary": "All available tutorials.",
       "description": "",
