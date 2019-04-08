@@ -1,5 +1,10 @@
 const BaseModel = require('./BaseModel');
 
+/**
+ * Class for the Note Model
+ * This is a DB class, so check out the tutorial on [setting up pgAdmin]{@tutorial setting-up-pgadmin}
+ * @extends BaseModel
+ */
 class Note extends BaseModel {
     static get tableName() {
         return 'notes';

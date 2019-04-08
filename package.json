@@ -32,7 +32,7 @@
     "webpack:watch": "docker-compose exec web npx react-scripts start",
     "postinstall": "./scripts/postinstall.sh",
     "docs": "open docs/site/index.html",
-    "docs:make": "jsdoc -c ./jsdocs.conf.js"
+    "docs:make": "rm -r ./docs/site && jsdoc -c ./jsdocs.conf.js"
   },
   "browserslist": [
     ">0.2%",

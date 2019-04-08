@@ -1,10 +1,10 @@
-<!-- start:readme.hbs -->
+<!-- start:source.tmpl.hbs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-		<title>Getting Started with Docker</title>
+		<title>BaseModel.js</title>
 		<link rel="icon" type="image/x-icon" href="favicon.ico"/>
 		<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -44,7 +44,7 @@
 			</style>
 		<script type="text/javascript">
 			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Ollie Notes","systemSummary":"A nice way to take your coding notes","systemLogo":"img/ollie.jpg","systemColor":"#5611A4","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented exteral members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials And Guides","summary":"All available tutorials."}],"footer":"","copyright":"Ollie Notes Copyright © 2019","linenums":true,"collapseSymbols":true,"inverseNav":true,"inlineNav":false,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":true,"sort":"linenum, longname, version, since","search":true,"favicon":"favicon.ico","stylesheets":["css/override.css"],"scripts":[],"monospaceLinks":true,"cleverLinks":false,"default":{"staticFiles":{"paths":["./docs/static"]}},"useLongnameInNav":false,"showInheritedInNav":true,"date":false};
-			window.DOCLET_TOC_ENABLED = true;
+			window.DOCLET_TOC_ENABLED = false;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
 </head>
@@ -98,71 +98,57 @@
 	</header>
 	<!-- end:navbar.hbs -->		<div class="page-header">
 			<div class="container">
-				<span class="kind">tutorial</span>
-				<h1><span class="title">Getting Started with Docker</span></h1>
+				<span class="kind">source</span>
+				<h1><span class="name">BaseModel.js</span></h1>
 			</div>
 		</div>
 	<div class="container content">
 		<div class="row">
-			<div class="col-md-9 main-content">
-						<ol class="breadcrumb">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="list_tutorial.html">Tutorials And Guides</a></li>
-							<li><a href="tutorial-tech-stack-tips.html">Tech Stack Info</a></li>
-							<li class="active">Getting Started with Docker</li>
-						</ol>
-		<section class="tutorial-section">
-			<article><h1>Getting Started with Docker</h1><p>Here are some of the videos that I wound up (in this order actually) where I finally got everything working the way I'd like</p>
-<p>think of all this as just a simple jumping off point, not a full course</p>
-<ul>
-<li><p>good overview on docker</p>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=YFl2mCHdv24">https://www.youtube.com/watch?v=YFl2mCHdv24</a></li>
-</ul>
-</li>
-<li><p>good overview on compose</p>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=Qw9zlE3t8Ko">https://www.youtube.com/watch?v=Qw9zlE3t8Ko</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>nice series for node overview with docker<ul>
-<li><a href="https://medium.freecodecamp.org/docker-quick-start-video-tutorials-1dfc575522a0">https://medium.freecodecamp.org/docker-quick-start-video-tutorials-1dfc575522a0</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>here's the link to the video that got everything working finally<ul>
-<li><a href="https://www.youtube.com/watch?v=1xdbIGj5mvs">https://www.youtube.com/watch?v=1xdbIGj5mvs</a></li>
-</ul>
-</li>
-</ul>
-<h1>random articles</h1><ul>
-<li>difference between COPY and ADD<ul>
-<li><a href="https://nickjanetakis.com/blog/docker-tip-2-the-difference-between-copy-and-add-in-a-dockerile">https://nickjanetakis.com/blog/docker-tip-2-the-difference-between-copy-and-add-in-a-dockerile</a></li>
-</ul>
-</li>
-</ul>
-<h1>dc down</h1><ul>
-<li>after you're done practicing, use<pre class="prettyprint source"><code>docker-compose down</code></pre></li>
-</ul>
-<p>to drop the network so you don't just have it floating around, i'm not sure that's mentioned in any of the videos</p>
-<h3>notes I need to process</h3><p>https://github.com/docker/compose/issues/4223</p>
-<p>@creynders The .env file must be placed in the directory where docker-compose is run from (here's the documentation). I've tested this with latest build, it still works. Your post is a bit confusing though because it looks like you are running a build command, which doesn't actually run the container, and hence doesn't use runtime variables like the one defined in your volume block. If you are trying to pass arguments to your docker build process to build an image, you should instead be using the args: key within the build: block in docker-compose.yml, and then you can work with those ARGs in your Dockerfile.</p>
-<p>I've noticed there is a bit of confusion surrounding environment variables (I was confused myself for a while). The documentation can be a bit unclear with its language on these terms, especially on of the official examples which confusingly loads the .env file in the the env_file block. This is the best documentation page I've found on various environment variables: https://docs.docker.com/compose/environment-variables/.</p>
-<p>Some blurbs to try to clear up any confusion:</p>
-<p>env_file
-This file (or files) contains a list of docker environment variables which will be passed to the container as if they were in the environment: block. These files are explicitly defined in the env_file: config block. Anything in these files is passed as if it were via docker run --env-file=FILE.</p>
-<p>.env file (https://docs.docker.com/compose/env-file/)
-This file must be placed in the same directory where docker-compose is run from, and is automatically loaded by docker-compose. It contains a list of environment variables which you would like to use as variable substitutions (aka string replacement) within your docker-compose.yml. These vars are not passed to the docker container. For example:</p>
-<p>volumes:</p>
-<pre class="prettyprint source"><code>- &quot;${PROJECT_SRC}/foo.txt:/app/foo.txt&quot;</code></pre><p>where your .env file contains PROJECT_SRC=my/source/directory.</p></article>
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">const { Model } = require('objection');
+const knex = require('./knex');
+
+Model.knex(knex); // Give the knex object to objection.
+
+/**
+ * A base class that lets us add generic queries to every model
+ */
+class BaseModel extends Model {
+    /**
+     *  Essentially just a shortcut for `this.query`
+     * @return {array} An array of all instances of the model in the DB
+     */
+    static async all() {
+        return this.query();
+    }
+
+    /**
+     * Find an instance of a model based on the id
+     * @param {number} id - The id of the instance you want to find
+     * @return {object|undefined} The instance as an object or `undefined` if there is no match
+     */
+    static async find(id) {
+        const user = await this.query().where('id', '=', id);
+        return user[0];
+    }
+
+    /**
+     * Find all instances of a model based on the value of a given column
+     * @param {string} column - The name of the column
+     * @param {string|number} value - The value of the given column
+     * @return {array} An array of all matches, will be empty if no matches found
+     */
+    static async where(column, value) {
+        return this.query().where(column, '=', value);
+    }
+}
+
+module.exports = BaseModel;
+</code></pre>
 		</section>
 			</div>
-				<div class="col-md-3 side-content">
-					<nav class="toc hidden-print hidden-sm hidden-xs"></nav>
-				</div>
 		</div>
 	</div>
 	<footer>
@@ -194,4 +180,4 @@ This file must be placed in the same directory where docker-compose is run from,
 	
 </body>
 </html>
-<!-- end:readme.hbs -->
+<!-- end:source.tmpl.hbs -->
