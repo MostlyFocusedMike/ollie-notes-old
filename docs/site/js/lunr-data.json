@@ -54,8 +54,9 @@
           "global"
         ],
         "undefined": [
+          "get",
           "hapi",
-          "tip",
+          "start",
           "tutori"
         ],
         "list_tutorial.html": [
@@ -102,6 +103,16 @@
                       "ref": "index.html",
                       "tf": 1300
                     }
+                  }
+                }
+              }
+            },
+            "f": {
+              "docs": {},
+              "o": {
+                "docs": {
+                  "undefined": {
+                    "tf": 33.33333333333333
                   }
                 }
               }
@@ -271,7 +282,7 @@
             "p": {
               "docs": {
                 "undefined": {
-                  "tf": 950
+                  "tf": 600
                 }
               }
             }
@@ -324,7 +335,7 @@
                   "r": {
                     "docs": {
                       "undefined": {
-                        "tf": 950
+                        "tf": 633.3333333333334
                       }
                     }
                   }
@@ -355,6 +366,16 @@
               }
             }
           },
+          "e": {
+            "docs": {},
+            "t": {
+              "docs": {
+                "undefined": {
+                  "tf": 633.3333333333334
+                }
+              }
+            }
+          },
           "u": {
             "docs": {},
             "i": {
@@ -379,6 +400,118 @@
                 "undefined": {
                   "tf": 950
                 }
+              }
+            }
+          }
+        },
+        "p": {
+          "docs": {},
+          "g": {
+            "docs": {},
+            "a": {
+              "docs": {},
+              "d": {
+                "docs": {},
+                "m": {
+                  "docs": {},
+                  "i": {
+                    "docs": {},
+                    "n": {
+                      "docs": {
+                        "undefined": {
+                          "tf": 633.3333333333334
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "o": {
+            "docs": {},
+            "i": {
+              "docs": {},
+              "n": {
+                "docs": {},
+                "t": {
+                  "docs": {
+                    "undefined": {
+                      "tf": 14
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "r": {
+            "docs": {},
+            "o": {
+              "docs": {},
+              "j": {
+                "docs": {},
+                "e": {
+                  "docs": {},
+                  "c": {
+                    "docs": {},
+                    "t": {
+                      "docs": {
+                        "undefined": {
+                          "tf": 14
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "s": {
+          "docs": {},
+          "e": {
+            "docs": {},
+            "t": {
+              "docs": {
+                "undefined": {
+                  "tf": 633.3333333333334
+                }
+              }
+            }
+          },
+          "t": {
+            "docs": {},
+            "a": {
+              "docs": {},
+              "c": {
+                "docs": {},
+                "k": {
+                  "docs": {
+                    "undefined": {
+                      "tf": 633.3333333333334
+                    }
+                  }
+                }
+              },
+              "r": {
+                "docs": {},
+                "t": {
+                  "docs": {
+                    "undefined": {
+                      "tf": 633.3333333333334
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "u": {
+          "docs": {},
+          "p": {
+            "docs": {
+              "undefined": {
+                "tf": 633.3333333333334
               }
             }
           }
@@ -458,66 +591,6 @@
             }
           }
         },
-        "p": {
-          "docs": {},
-          "o": {
-            "docs": {},
-            "i": {
-              "docs": {},
-              "n": {
-                "docs": {},
-                "t": {
-                  "docs": {
-                    "undefined": {
-                      "tf": 14
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "r": {
-            "docs": {},
-            "o": {
-              "docs": {},
-              "j": {
-                "docs": {},
-                "e": {
-                  "docs": {},
-                  "c": {
-                    "docs": {},
-                    "t": {
-                      "docs": {
-                        "undefined": {
-                          "tf": 14
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "s": {
-          "docs": {},
-          "t": {
-            "docs": {},
-            "a": {
-              "docs": {},
-              "c": {
-                "docs": {},
-                "k": {
-                  "docs": {
-                    "undefined": {
-                      "tf": 633.3333333333334
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
         "h": {
           "docs": {},
           "a": {
@@ -527,7 +600,7 @@
               "i": {
                 "docs": {
                   "undefined": {
-                    "tf": 950
+                    "tf": 633.3333333333334
                   }
                 }
               }
@@ -555,7 +628,7 @@
           }
         }
       },
-      "length": 35
+      "length": 42
     },
     "corpusTokens": [
       "avail",
@@ -563,10 +636,12 @@
       "code",
       "docker",
       "document",
+      "get",
       "global",
       "guid",
       "hapi",
       "index",
+      "info",
       "jump",
       "learn",
       "list",
@@ -574,16 +649,20 @@
       "nice",
       "note",
       "olli",
+      "pgadmin",
       "point",
       "project",
       "random",
       "readm",
       "rough",
+      "set",
       "stack",
+      "start",
       "take",
       "tech",
       "tip",
       "tutori",
+      "up",
       "way"
     ],
     "pipeline": [
@@ -617,10 +696,10 @@
     },
     "undefined": {
       "kind": "tutorial",
-      "title": "Hapi Tips",
-      "longname": "hapi-tips",
-      "name": "hapi-tips",
-      "tags": "hapi-tips",
+      "title": "Getting Started with Hapi",
+      "longname": "getting-started-with-hapi",
+      "name": "getting-started-with-hapi",
+      "tags": "getting-started-with-hapi",
       "summary": "",
       "description": "",
       "body": ""

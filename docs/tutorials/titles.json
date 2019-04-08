@@ -1,13 +1,14 @@
 {
     "tech-stack-tips": {
-        "title": "Tech Stack Tips",
+        "title": "Tech Stack Info",
         "summary": "Jumping off points for learning the tech in this project",
         "children": {
-            "docker-tips": {
-                "title": "Docker Tips"
+            "getting-started-with-docker": {
+                "title": "Getting Started with Docker"
             },
-            "hapi-tips": {
-                "title": "Hapi Tips"
+
+            "getting-started-with-hapi": {
+                "title": "Getting Started with Hapi"
             }
         }
     },
@@ -16,5 +17,8 @@
     },
     "rough-notes": {
         "title": "Rough Notes"
+    },
+    "setting-up-pgadmin": {
+        "title": "Setting Up pgAdmin"
     }
 }

@@ -33,6 +33,11 @@ module.exports = {
         stylesheets: [
             'css/overide.css',
         ],
+        default: {
+            staticFiles: {
+                paths: ['./docs/images'],
+            },
+        },
     },
     opts: {
         destination: './docs/site',
