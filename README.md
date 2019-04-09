@@ -1,4 +1,5 @@
 # Ollie Notes
+[swagger docs](http://localhost:8000/swagger)
 
 
 ## Useful extras
