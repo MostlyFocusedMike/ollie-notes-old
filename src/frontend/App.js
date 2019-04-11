@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { UserAdapter } from './adapters';
+import Routes from './routes';
 
 
 const user = new UserAdapter();
@@ -11,6 +12,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="App">
+                <Routes />
                 <h1>Hello There</h1>
             </div>
         );

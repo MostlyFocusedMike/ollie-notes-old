@@ -17,8 +17,8 @@ COPY ./knexfile.js /usr/app/
 COPY ./scripts /usr/app/scripts
 
 # set up your docker environment with nodemon
-RUN npm install
 RUN npm install -g nodemon
+RUN npm ci
 RUN npx react-scripts build
 
 EXPOSE 8000
