@@ -1,8 +1,14 @@
-import BaseAdapter from './BaseAdapter';
+const Constants = require('../../constants');
 
-class NoteAdapter extends BaseAdapter {
-    getOne() {
-        return this.url;
+class NoteAdapter {
+    constructor(APIVersion = 'v1') {
+        this.url = `${Constants.API_URL}/${APIVersion}/notes`;
+    }
+
+    list() {
+        return fetch(this.url)
+            .then(r => r.json())
+            .catch(console.log);
     }
 }
 

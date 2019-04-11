@@ -1,9 +1,8 @@
-import BaseAdapter from './BaseAdapter';
+const Constants = require('../../constants');
 
-class UserAdapter extends BaseAdapter {
-    constructor() {
-        super();
-        this.url = `${this.url}/users`;
+class UserAdapter {
+    constructor(APIVersion = 'v1') {
+        this.url = `${Constants.API_URL}/${APIVersion}/users`;
     }
 
     getOne(username) {
