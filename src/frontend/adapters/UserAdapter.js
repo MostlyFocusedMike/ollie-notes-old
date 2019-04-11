@@ -6,7 +6,13 @@ class UserAdapter extends BaseAdapter {
         this.url = `${this.url}/users`;
     }
 
-    getOne() {
+    getOne(username) {
+        return fetch(`${this.url}/${username}`)
+            .then(r => r.json())
+            .catch(console.log);
+    }
+
+    list() {
         return fetch(this.url)
             .then(r => r.json())
             .catch(console.log);

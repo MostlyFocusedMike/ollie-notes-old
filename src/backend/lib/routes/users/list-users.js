@@ -15,7 +15,7 @@ module.exports = {
             },
         },
         handler: async (request, h) => {
-            console.log('hit!');
+            console.log('hit list-users');
             const {
                 server: { app: { Database: { User } } },
                 query,

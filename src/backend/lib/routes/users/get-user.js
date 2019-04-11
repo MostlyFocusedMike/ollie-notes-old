@@ -23,6 +23,7 @@ module.exports = {
             },
         },
         handler: async (request, h) => {
+            console.log('hit get-user');
             const {
                 params: { username },
                 query,
