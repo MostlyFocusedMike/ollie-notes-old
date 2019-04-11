@@ -1,4 +1,4 @@
-const Constants = require('../../constants.js');
+const Constants = require('../../../constants');
 const User = require('../../models/user');
 
 exports.seed = async (knex) => {

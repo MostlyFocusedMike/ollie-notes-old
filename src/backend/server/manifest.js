@@ -2,7 +2,7 @@ require('dotenv').config();
 const Confidence = require('confidence');
 const Toys = require('toys');
 const Path = require('path');
-const Constants = require('../constants');
+const Constants = require('../../constants');
 
 // Glue manifest as a confidence store
 module.exports = new Confidence.Store({

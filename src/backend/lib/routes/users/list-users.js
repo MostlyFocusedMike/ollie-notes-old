@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const Constants = require('../../../constants');
+const Constants = require('../../../../constants');
 
 module.exports = {
     method: 'GET',
@@ -8,12 +8,14 @@ module.exports = {
         tags: ['api', Constants.TAGS.USERS],
         description: 'Get profile info of all users',
         notes: "Use the 'filter' query param to get rid of metadata",
+        cors: process.env.NODE_ENV !== 'production',
         validate: {
             query: {
                 filter: Joi.boolean().description('Filter out user metadata'),
             },
         },
         handler: async (request, h) => {
+            console.log('hit!');
             const {
                 server: { app: { Database: { User } } },
                 query,

@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const Constants = require('../../../constants');
+const Constants = require('../../../../constants');
 
 module.exports = {
     method: 'GET',
@@ -12,6 +12,7 @@ module.exports = {
             strategy: 'session',
             mode: 'try',
         },
+        cors: process.env.NODE_ENV !== 'production',
         validate: {
             params: { // this lets us make our swagger docs dynamic as well
                 username: Joi.string().description('Username from GitHub'),

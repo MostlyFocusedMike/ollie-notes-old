@@ -1,4 +1,5 @@
 module.exports = Object.freeze({
+    API_URL: process.env.NODE_ENV === 'production' ? 'https://ollienotes.com/api' : 'http://localhost:8000/api',
     OAUTH_TYPES: {
         GITHUB: 'github',
     },
