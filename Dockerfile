@@ -14,6 +14,7 @@ COPY ./src /usr/app/src/
 COPY ./public /usr/app/public/
 COPY ./package*.json /usr/app/
 COPY ./knexfile.js /usr/app/
+COPY ./scripts /usr/app/scripts
 
 # set up your docker environment with nodemon
 RUN npm install

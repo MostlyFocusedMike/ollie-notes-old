@@ -23,5 +23,8 @@
     },
     "setting-up-pgadmin": {
         "title": "Setting Up pgAdmin"
+    },
+    "faq": {
+        "title": "FAQ"
     }
 }
