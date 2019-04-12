@@ -1,8 +1,8 @@
 const Constants = require('../../constants');
 
 class UserAdapter {
-    constructor(APIVersion = 'v1') {
-        this.url = `${Constants.API_URL}/${APIVersion}/users`;
+    constructor(APIVersion = '/v1') {
+        this.url = `${Constants.BACKEND_URL}api${APIVersion}/users`;
     }
 
     getOne(username) {
@@ -12,6 +12,7 @@ class UserAdapter {
     }
 
     list() {
+        console.log('this.url: ', this.url);
         return fetch(this.url)
             .then(r => r.json())
             .catch(console.log);

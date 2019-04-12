@@ -1,11 +1,14 @@
 import React from 'react';
+import Constants from '../../constants';
 
 class Home extends React.Component {
     render() {
         return (
             <div id='home'>
                 <h1>Home</h1>
-                <a href="http://localhost:8000/login">login</a>
+                <form action={`${Constants.BACKEND_URL}auth/github`} method='GET'>
+                    <input type='submit' value='submit' />
+                </form>
             </div>
         );
     }

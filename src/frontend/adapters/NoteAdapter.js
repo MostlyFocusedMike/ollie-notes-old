@@ -2,7 +2,7 @@ const Constants = require('../../constants');
 
 class NoteAdapter {
     constructor(APIVersion = 'v1') {
-        this.url = `${Constants.API_URL}/${APIVersion}/notes`;
+        this.url = `${Constants.API_URL}${APIVersion}/notes`;
     }
 
     list() {
