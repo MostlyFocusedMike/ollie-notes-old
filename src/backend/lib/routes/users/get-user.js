@@ -31,7 +31,7 @@ module.exports = {
             } = request;
 
             const [user] = query.filter
-                ? await User.where('username', username, true)
+                ? await User.whereFiltered('username', username)
                 : await User.where('username', username);
 
             if (!user) return { msg: 'There is no user' };

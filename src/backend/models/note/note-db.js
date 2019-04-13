@@ -1,11 +1,9 @@
-const BaseModel = require('./BaseModel');
+const { Model } = require('objection');
+const knex = require('../knex');
 
-/**
- * Class for the Note Model
- * This is a DB class, so check out the tutorial on [setting up pgAdmin]{@tutorial setting-up-pgadmin}
- * @extends BaseModel
- */
-class Note extends BaseModel {
+Model.knex(knex); // Give the knex object to objection.
+
+class NoteDB extends Model {
     static get tableName() {
         return 'notes';
     }
@@ -31,4 +29,4 @@ class Note extends BaseModel {
     }
 }
 
-module.exports = Note;
+module.exports = NoteDB;
