@@ -32,7 +32,7 @@ class BaseModel extends Model {
      * @return {array} An array of all matches, will be empty if no matches found
      */
     static async where(column, value) {
-        return this.query().where(column, '=', value);
+        return this.query().where(column.toLowerCase(), '=', value.toLowerCase());
     }
 }
 

@@ -44,7 +44,11 @@ class User extends BaseModel {
 
     static async findOrCreateGitHub(profile) {
         let [user] = await this.query().where('github_id', '=', profile.github_id);
-        if (!user) user = await this.query().insert(profile);
+        if (!user) {
+            // lowered username avoids query issues in future
+            const filteredProfile = { ...profile, username: profile.username.toLowerCase() };
+            user = await this.query().insert(filteredProfile);
+        }
         return user;
     }
 

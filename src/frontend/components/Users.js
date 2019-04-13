@@ -16,9 +16,8 @@ class Users extends React.Component {
     }
 
     render() {
-        console.log('this.state: ', this.state.users);
         return (
-            <div id='home'>
+            <div id='users-list'>
                 <h1>users</h1>
                 {
                     this.state.users.map((user) => {
