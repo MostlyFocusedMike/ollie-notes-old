@@ -19,7 +19,7 @@ module.exports = {
             },
             query: {
                 notes: Joi.boolean().description("Get all of the user's notes"),
-                filter: Joi.boolean().description('Filter out user metadata'),
+                metadata: Joi.boolean().description('Include metadata like created, modified, and oauth type'),
             },
         },
         handler: async (request, h) => {
@@ -30,8 +30,8 @@ module.exports = {
                 server: { app: { Database: { User } } },
             } = request;
 
-            const [user] = query.filter
-                ? await User.whereFiltered('username', username)
+            const [user] = query.metadata
+                ? await User.where('username', username)
                 : await User.where('username', username);
 
             if (!user) return { msg: 'There is no user' };

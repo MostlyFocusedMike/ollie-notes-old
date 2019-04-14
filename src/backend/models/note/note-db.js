@@ -21,11 +21,19 @@ class NoteDB extends Model {
                 user_id: { type: 'integer' },
                 title: { type: 'string' },
                 text: { type: 'string' },
-                oauth_type: { type: 'string' },
                 created_at: { type: 'string' },
                 updated_at: { type: 'string' },
             },
         };
+    }
+
+    static get selectedProperties() {
+        return [
+            'id',
+            'user_id',
+            'title',
+            'text',
+        ];
     }
 }
 

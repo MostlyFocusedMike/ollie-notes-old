@@ -1,10 +1,10 @@
 const NoteDB = require('./note-db');
 
 class Note extends NoteDB {
-    static async all(metadata) {
-        return metadata
+    static async all(includeMetadata) {
+        return includeMetadata
             ? this.query
-            : this.query().select('id', 'title', 'text');
+            : this.query().select(...this.selectedProperties);
     }
 }
 

@@ -44,6 +44,17 @@ class UserDB extends Model {
             },
         };
     }
+
+    static get selectedProperties() {
+        return [
+            'id',
+            'github_id',
+            'name',
+            'username',
+            'avatar',
+            'email',
+        ];
+    }
 }
 
 module.exports = UserDB;

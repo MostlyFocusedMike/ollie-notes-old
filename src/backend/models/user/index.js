@@ -11,20 +11,23 @@ class User extends UserDB {
         return user;
     }
 
-    static async all(metadata) {
-        return metadata
+    static async all(includeMetadata) {
+        return includeMetadata
             ? this.query()
-            : this.query().select('id', 'github_id', 'name', 'username', 'avatar');
+            : this.query().select(...this.selectedProperties);
     }
 
-    static async where(column, value) {
-        return this.query()
-            .select('id', 'github_id', 'name', 'username', 'avatar', 'email')
-            .where(column, '=', value);
+    static async where(column, value, includeMetadata) {
+        return includeMetadata
+            ? this.query()
+                .where(column, '=', value)
+            : this.query()
+                .select(...this.selectedProperties)
+                .where(column, '=', value);
     }
 
-    async getNotes(metadata) {
-        return metadata
+    async getNotes(includeMetadata) {
+        return includeMetadata
             ? this.$relatedQuery('notes')
             : this
                 .$relatedQuery('notes')
