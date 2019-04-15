@@ -2,7 +2,7 @@ const Constants = require('../../../../constants');
 
 module.exports = {
     method: 'GET',
-    path: '/auth/github',
+    path: '/auth/v1/github',
     options: {
         auth: 'github',
         tags: ['api', Constants.TAGS.AUTH],

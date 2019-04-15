@@ -2,7 +2,7 @@ const Constants = require('../../../../constants');
 
 module.exports = {
     method: 'POST',
-    path: '/logout',
+    path: '/auth/v1/logout',
     options: {
         tags: ['api', Constants.TAGS.AUTH],
         cors: {

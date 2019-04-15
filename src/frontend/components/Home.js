@@ -6,7 +6,7 @@ class Home extends React.Component {
         return (
             <div id='home'>
                 <h1>Home</h1>
-                <form action={`${Constants.BACKEND_URL}auth/github`} method='GET'>
+                <form action={`${Constants.BACKEND_URL}auth/v1/github`} method='GET'>
                     <input type='submit' value='submit' />
                 </form>
             </div>
