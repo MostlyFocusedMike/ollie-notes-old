@@ -28,6 +28,7 @@ module.exports = {
         },
         handler: async (request, h) => {
             console.log('hit get-user');
+            console.log('request.auth: ', request.auth);
             const {
                 params: { username },
                 query,
@@ -39,7 +40,6 @@ module.exports = {
                 : await User.where('username', username);
 
             if (!user) return { msg: 'There is no user' };
-
             if (user.isLoggedIn(request)) user.isUser = true;
             if (query.notes) {
                 user.notes = await user.getNotes(true);

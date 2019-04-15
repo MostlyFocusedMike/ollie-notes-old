@@ -12,7 +12,9 @@ const register = async (server, options) => {
         validateFunc: async (request, session) => {
             /* validate the existing session on every request */
             console.log('session from validateFunc: ', session);
-            const user = request.server.app.users[session.username];
+            const [user] = await request.server.app.Database.User
+                .query()
+                .where('username', '=', session.username);
             if (!user) return { valid: false };
             return { valid: true }; // can also send credentials property
         },

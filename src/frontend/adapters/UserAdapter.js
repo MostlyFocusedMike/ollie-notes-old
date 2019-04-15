@@ -9,12 +9,12 @@ class UserAdapter {
         const options = {
             method: 'GET',
             credentials: 'include',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            // mode: 'no-cors',
+            // headers: {
+            //     'Content-Type': 'application/json',
+            // },
         };
-        return fetch(`${this.url}/${username}`)
+        return fetch(`${this.url}/${username}`, options)
             .then((r) => {
                 console.log('r:', r);
                 return r;
