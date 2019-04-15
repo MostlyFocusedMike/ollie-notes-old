@@ -21,7 +21,6 @@ module.exports = {
                 query,
             } = request;
 
-
             const users = query.metadata ? await User.all(true) : await User.all();
 
             return users;

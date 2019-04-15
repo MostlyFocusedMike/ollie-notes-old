@@ -3,8 +3,7 @@ module.exports = {
     scheme: 'cookie',
     options: {
         password: process.env.COOKIE_PSWD, // needed for cookie encoding
-        isSecure: false, // process.env.NODE_ENV === 'production', // send over http in local
-        // redirectTo: '/', // redirect of failed login
+        isSecure: process.env.NODE_ENV === 'production', // send over http in local
         cookie: 'session', // name of the cookie
 
         validateFunc: async (request, session) => {
