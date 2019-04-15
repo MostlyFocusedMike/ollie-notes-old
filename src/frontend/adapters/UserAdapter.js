@@ -6,7 +6,19 @@ class UserAdapter {
     }
 
     getOne(username) {
+        const options = {
+            method: 'GET',
+            credentials: 'include',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
         return fetch(`${this.url}/${username}`)
+            .then((r) => {
+                console.log('r:', r);
+                return r;
+            })
             .then(r => r.json())
             .catch(console.log);
     }

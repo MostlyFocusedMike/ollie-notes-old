@@ -36,7 +36,7 @@ class UserDB extends Model {
         return {
             notes: {
                 relation: Model.HasManyRelation,
-                modelClass: Path.join(__dirname, 'note'),
+                modelClass: Path.join(__dirname, '..', 'note'),
                 join: {
                     from: 'users.id',
                     to: 'notes.user_id',

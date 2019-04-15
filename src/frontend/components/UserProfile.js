@@ -23,13 +23,19 @@ class UserProfile extends React.Component {
 
     render() {
         if (this.state.loaded) {
+            console.log('this.state.user: ', this.state.user);
             const { username, name, avatar } = this.state.user;
             return (
-                <div id='home'>
+                <div id='user-profile'>
                     <h1>I am the user</h1>
                     <p>this is the username {username}</p>
                     <p>this is the name {name}</p>
                     <img src={avatar} />
+                    {
+                        this.state.user.isUser
+                            ? <p>Logged in</p>
+                            : <p>You are not this user</p>
+                    }
                 </div>
             );
         }

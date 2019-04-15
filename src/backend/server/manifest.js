@@ -72,9 +72,18 @@ module.exports = new Confidence.Store({
                     documentationPath: '/swagger',
                 },
             },
+            // {
+            //     plugin: 'hapi-auth-cookie',
+            //     options: {},
+            // },
             {
-                plugin: 'hapi-auth-cookie',
-                options: {},
+                plugin: './cookie-auth',
+            },
+            {
+                plugin: './oauth',
+            },
+            {
+                plugin: './session',
             },
             {
                 plugin: '../lib', // Main plugin

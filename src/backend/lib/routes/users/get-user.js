@@ -12,14 +12,18 @@ module.exports = {
             strategy: 'session',
             mode: 'try',
         },
-        cors: process.env.NODE_ENV !== 'production',
+        cors: {
+            origin: ['*'],
+            headers: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'],
+            credentials: true,
+        },
         validate: {
             params: { // this lets us make our swagger docs dynamic as well
                 username: Joi.string().description('Username from GitHub'),
             },
             query: {
                 notes: Joi.boolean().description("Get all of the user's notes"),
-                metadata: Joi.boolean().description('Include metadata like created, modified, and oauth type'),
+                filter: Joi.boolean().description('Filter out user metadata'),
             },
         },
         handler: async (request, h) => {
@@ -30,8 +34,8 @@ module.exports = {
                 server: { app: { Database: { User } } },
             } = request;
 
-            const [user] = query.metadata
-                ? await User.where('username', username)
+            const [user] = query.filter
+                ? await User.where('username', username, true)
                 : await User.where('username', username);
 
             if (!user) return { msg: 'There is no user' };
@@ -40,6 +44,7 @@ module.exports = {
             if (query.notes) {
                 user.notes = await user.getNotes(true);
             }
+            console.log('user: ', user);
             return user;
         },
     },
