@@ -11,8 +11,7 @@ class Users extends React.Component {
     }
 
     componentDidMount() {
-        const adapter = new UserAdapter();
-        adapter.list().then(users => this.setState({ users }, () => console.log('users: ', this.state.users)));
+        UserAdapter.list().then(users => this.setState({ users }));
     }
 
     render() {

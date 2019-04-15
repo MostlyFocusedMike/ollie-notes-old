@@ -1,15 +1,13 @@
 const Constants = require('../../constants');
 
 class NoteAdapter {
-    constructor(APIVersion = 'v1') {
-        this.url = `${Constants.API_URL}${APIVersion}/notes`;
-    }
-
-    list() {
+    static list() {
         return fetch(this.url)
             .then(r => r.json())
             .catch(console.log);
     }
 }
+
+NoteAdapter.url = `${Constants.BACKEND_URL}api/v1/notes`;
 
 export default NoteAdapter;

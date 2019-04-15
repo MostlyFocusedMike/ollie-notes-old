@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Constants from '../../constants';
 
 import { UserAdapter, AuthAdapter } from '../adapters';
 
@@ -15,9 +14,8 @@ class UserProfile extends React.Component {
     }
 
     componentDidMount() {
-        const adapter = new UserAdapter();
         const { username } = this.props.match.params;
-        adapter.getOne(username, true).then(user => this.setState({ user }, () => {
+        UserAdapter.getOne(username, true).then(user => this.setState({ user }, () => {
             this.setState({ loaded: true });
         }));
     }

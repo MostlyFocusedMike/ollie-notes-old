@@ -1,11 +1,7 @@
 const Constants = require('../../constants');
 
 class UserAdapter {
-    constructor(APIVersion = '/v1') {
-        this.url = `${Constants.BACKEND_URL}api${APIVersion}/users`;
-    }
-
-    getOne(username) {
+    static getOne(username) {
         const options = {
             method: 'GET',
             credentials: 'include', // fetch doesn't include cookies by default
@@ -19,12 +15,14 @@ class UserAdapter {
             .catch(console.log);
     }
 
-    list() {
+    static list() {
         console.log('this.url: ', this.url);
         return fetch(this.url)
             .then(r => r.json())
             .catch(console.log);
     }
 }
+
+UserAdapter.url = `${Constants.BACKEND_URL}api/v1/users`;
 
 export default UserAdapter;
