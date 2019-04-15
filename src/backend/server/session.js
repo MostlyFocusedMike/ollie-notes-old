@@ -6,7 +6,6 @@ const register = async (server, options) => {
     server.auth.strategy('session', 'cookie', {
         password: process.env.COOKIE_PSWD, // needed for cookie encoding
         isSecure: process.env.NODE_ENV === 'production', // send over http in local
-        redirectTo: '/', // redirect of failed login
         cookie: 'session', // name of the cookie
         isSameSite: false,
         validateFunc: async (request, session) => {

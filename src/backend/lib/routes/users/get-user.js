@@ -28,7 +28,6 @@ module.exports = {
         },
         handler: async (request, h) => {
             console.log('hit get-user');
-            console.log('request.auth: ', request.auth);
             const {
                 params: { username },
                 query,
@@ -44,7 +43,6 @@ module.exports = {
             if (query.notes) {
                 user.notes = await user.getNotes(true);
             }
-            console.log('user: ', user);
             return user;
         },
     },

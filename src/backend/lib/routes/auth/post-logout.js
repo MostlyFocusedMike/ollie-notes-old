@@ -5,12 +5,19 @@ module.exports = {
     path: '/logout',
     options: {
         tags: ['api', Constants.TAGS.AUTH],
+        cors: {
+            origin: ['*'],
+            headers: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'],
+            credentials: true,
+        },
         description: 'Logout page that clears the session cookie',
         notes: "Be careful, that 'try out' button will actually log you out", // swagger note
-        auth: 'session',
+        // auth: 'session',
         handler: (request, h) => {
             request.cookieAuth.clear();
-            return h.redirect('/login');
+            console.log('request.auth: ', request.auth);
+            console.log('logged out: ');
+            return { msg: 'Logged Out' };
         },
     },
 };

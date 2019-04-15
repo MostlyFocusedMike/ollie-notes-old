@@ -8,7 +8,7 @@ class UserAdapter {
     getOne(username) {
         const options = {
             method: 'GET',
-            credentials: 'include',
+            credentials: 'include', // fetch doesn't include cookies by default
             // mode: 'no-cors',
             // headers: {
             //     'Content-Type': 'application/json',

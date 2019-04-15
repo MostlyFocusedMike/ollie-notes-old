@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Constants from '../../constants';
 
 import { UserAdapter } from '../adapters';
 
@@ -21,6 +22,19 @@ class UserProfile extends React.Component {
         }));
     }
 
+    handleLogout = (e) => {
+        e.preventDefault();
+        fetch(`${Constants.BACKEND_URL}logout`, { method: 'POST', cors: 'no-cors', credentials: 'include' })
+            .then(() => {
+                this.setState({
+                    user: {
+                        ...this.state.user,
+                        isUser: false,
+                    },
+                });
+            });
+    }
+
     render() {
         if (this.state.loaded) {
             console.log('this.state.user: ', this.state.user);
@@ -33,7 +47,9 @@ class UserProfile extends React.Component {
                     <img src={avatar} />
                     {
                         this.state.user.isUser
-                            ? <p>Logged in</p>
+                            ? <form onSubmit={this.handleLogout}>
+                                <input type='submit' value='Log Out'/>
+                            </form>
                             : <p>You are not this user</p>
                     }
                 </div>
