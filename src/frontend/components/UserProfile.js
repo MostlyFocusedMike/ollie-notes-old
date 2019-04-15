@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Constants from '../../constants';
 
-import { UserAdapter } from '../adapters';
+import { UserAdapter, AuthAdapter } from '../adapters';
 
 class UserProfile extends React.Component {
     constructor() {
@@ -24,7 +24,7 @@ class UserProfile extends React.Component {
 
     handleLogout = (e) => {
         e.preventDefault();
-        fetch(`${Constants.BACKEND_URL}logout`, { method: 'POST', cors: 'no-cors', credentials: 'include' })
+        AuthAdapter.logout()
             .then(() => {
                 this.setState({
                     user: {

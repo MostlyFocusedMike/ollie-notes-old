@@ -1,6 +1,8 @@
 import React from 'react';
 import Constants from '../../constants';
 
+// this can't use a fetch adapter yet since there are issues with GitHub and CORS
+// so we manually visit the serer page and then use hapi to redirect back to the front
 class Login extends React.Component {
     render() {
         return (

@@ -1,9 +1,16 @@
 const Constants = require('../../constants');
 
 class AuthAdapter {
-    constructor(AuthVersion = '/v1') {
-        this.url = `${Constants.BACKEND_URL}auth${AuthVersion}`;
+    static logout() {
+        const options = {
+            method: 'POST',
+            credentials: 'include',
+        };
+        return fetch(`${this.url}/logout`, options)
+            .then(r => r.json());
     }
 }
+
+AuthAdapter.url = `${Constants.BACKEND_URL}auth/v1`;
 
 export default AuthAdapter;
