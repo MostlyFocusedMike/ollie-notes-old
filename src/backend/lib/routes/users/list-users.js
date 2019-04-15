@@ -7,11 +7,11 @@ module.exports = {
     options: {
         tags: ['api', Constants.TAGS.USERS],
         description: 'Get profile info of all users',
-        notes: "Use the 'filter' query param to get rid of metadata",
+        notes: "Use the 'metadata' query param to get rid of metadata",
         cors: process.env.NODE_ENV !== 'production',
         validate: {
             query: {
-                filter: Joi.boolean().description('Filter out user metadata'),
+                metadata: Joi.boolean().description('Filter out user metadata'),
             },
         },
         handler: async (request, h) => {
@@ -22,7 +22,7 @@ module.exports = {
             } = request;
 
 
-            const users = query.filter ? await User.allFiltered() : await User.all();
+            const users = query.metadata ? await User.all(true) : await User.all();
 
             return users;
         },

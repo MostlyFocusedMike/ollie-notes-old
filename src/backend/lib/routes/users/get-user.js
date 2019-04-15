@@ -7,7 +7,7 @@ module.exports = {
     options: {
         tags: ['api', Constants.TAGS.USERS],
         description: 'Get user profile info',
-        notes: "Use the 'notes' and 'filter' query params for better info",
+        notes: "Use the 'notes' and 'metadata' query params for better info",
         auth: {
             strategy: 'session',
             mode: 'try',
@@ -23,7 +23,7 @@ module.exports = {
             },
             query: {
                 notes: Joi.boolean().description("Get all of the user's notes"),
-                filter: Joi.boolean().description('Filter out user metadata'),
+                metadata: Joi.boolean().description('Include user metadata'),
             },
         },
         handler: async (request, h) => {
@@ -34,15 +34,13 @@ module.exports = {
                 server: { app: { Database: { User } } },
             } = request;
 
-            const [user] = query.filter
+            const [user] = query.metadata
                 ? await User.where('username', username, true)
                 : await User.where('username', username);
 
             if (!user) return { msg: 'There is no user' };
             if (user.isLoggedIn(request)) user.isUser = true;
-            if (query.notes) {
-                user.notes = await user.getNotes(true);
-            }
+            if (query.notes) user.notes = await user.getNotes(true);
             return user;
         },
     },
