@@ -12,7 +12,7 @@ module.exports = {
         },
         description: 'Logout page that clears the session cookie',
         notes: "Be careful, that 'try out' button will actually log you out", // swagger note
-        // auth: 'session',
+        auth: 'session',
         handler: (request, h) => {
             request.cookieAuth.clear();
             console.log('request.auth: ', request.auth);

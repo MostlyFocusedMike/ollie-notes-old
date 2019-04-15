@@ -19,3 +19,26 @@ command: ./scripts/wait-for-pg.sh db:5432 -- nodemon /usr/app/src/backend/server
 ```
 
 This issue is [discussed by docker and is called startup order](https://docs.docker.com/compose/startup-order/) and you can even see the postgres image talk about this problem in the [caveats section of pg's docker page](https://hub.docker.com/_/postgres)
+
+# What are the credentials on these fetch requests? (CORS side note)
+Our front and back end are on the same server becuase we want to keep auth simple and use cookies for sessions. However, fetch does not automatically include any sort of cookie data out of the box. In order to use cookies with fetch you have to do:
+
+```js
+fetch('ur', {
+    credentials: 'include',
+    // other fetch option data
+})
+```
+
+## CORS issues
+We have not yet solved the port issue (dev uses webpack server on 3000, actual app build runs on port 8000), which is a shame becuase using cookies _really_ irritates CORS . Hapi won't be able to get around it by just using `cors: false` anymore. Instead the `cors` property in the route options has to look like:
+
+```js
+cors: {
+    origin: ['*'],
+    headers: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'],
+    credentials: true,
+},
+```
+
+Ideally, we can remove this once we properly figure out how to use reverse proxy's for local development so we aren't going from 3000 on the front to 8000 on the back.

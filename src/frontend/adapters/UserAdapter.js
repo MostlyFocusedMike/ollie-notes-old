@@ -9,10 +9,6 @@ class UserAdapter {
         const options = {
             method: 'GET',
             credentials: 'include', // fetch doesn't include cookies by default
-            // mode: 'no-cors',
-            // headers: {
-            //     'Content-Type': 'application/json',
-            // },
         };
         return fetch(`${this.url}/${username}`, options)
             .then((r) => {
