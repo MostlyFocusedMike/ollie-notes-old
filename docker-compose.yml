@@ -40,3 +40,11 @@ services:
       POSTGRES_DB: ollie
 
     container_name: db_container
+
+  # nginx:
+  #   image: nginx:latest
+  #   ports:
+  #     - '80:80'
+  #     - '443:443'
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro

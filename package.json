@@ -16,7 +16,7 @@
   "scripts": {
     "dc:build": "docker-compose up -d --build",
     "dc:build:web": "docker-compose up -d --build web",
-    "destroy": " rm -rf node_modules && docker-compose down",
+    "destroy": " rm -rf node_modules .env && docker-compose down",
     "eject": "react-scripts eject",
     "in:db": "docker-compose exec db psql ollie root",
     "in:web": "docker-compose exec web bash",
