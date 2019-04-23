@@ -1,31 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { UserAdapter } from '../adapters';
 
-class Users extends React.Component {
-    constructor() {
-        super();
-        this.initState = {
-            users: [],
-        };
-        this.state = this.initState;
-    }
+const Users = () => {
+    const [usersState, setUsersState] = useState([]);
 
-    componentDidMount() {
-        UserAdapter.list().then(users => this.setState({ users }));
-    }
+    // https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects
+    // https://www.andreasreiterer.at/react-useeffect-hook-loop/
+    useEffect(() => {
+        UserAdapter.list().then(users => setUsersState(users));
+    }, []);
 
-    render() {
-        return (
-            <div id='users-list'>
-                <h1>users</h1>
-                {
-                    this.state.users.map((user) => {
-                        return <p key={ user.username }>{ user.username }</p>;
-                    })
-                }
-            </div>
-        );
-    }
+    return (
+        <div id='users-list'>
+            <h1>users</h1>
+            {
+                usersState.map((user) => {
+                    return <p key={ user.username }>{ user.username }</p>;
+                })
+            }
+        </div>
+    );
 }
 
 export default Users;

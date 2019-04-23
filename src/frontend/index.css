@@ -4,4 +4,9 @@ body {
   font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #333;
+}
+
+p, h1, h2, h3 {
+    color: #AAA;
 }

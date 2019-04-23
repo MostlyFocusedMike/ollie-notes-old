@@ -26,7 +26,7 @@ There you have it, your local dev environment is set up.
 Ollie Notes uses OAuth through GitHub to avoid storing sensitive user data in its DB.
 The keys for this service can't be stored publicly, but without those keys the app wouldn't be able to run. In order to get around this, we use a stub function for auth in local dev.
 
-This stub function uses a bogus id and secret if a the `SEED_USER_GITHUB_ID` environment variable is set. If it is, Ollie Notes will then use that id and return the seed user's data to the rest of the app. Because of this function, our auth route never actually hits GitHub, so our fake id and secret never cause problems.
+This stub function relies on the fake user id environment variable `SEED_USER_GITHUB_ID`. If it is set, Ollie Notes will then use that id and return the seed user's data to the rest of the app. It never actually hits GitHub's servers because it's using the fake auth, so we can get away with using nonsense for the auth client id and secret. (we can't just set them as nothing because the plugin will fail if there is no string value for them)
 
 This is fine if you just want to clone down the repo and mess around, but if you actually want to be able to do the full auth with real GitHub accounts, the id and secret are available on request, just email mostlyfocusedmike@gmail.com for more information.
 
