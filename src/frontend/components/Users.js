@@ -4,11 +4,9 @@ import { UserAdapter } from '../adapters';
 const Users = () => {
     const [usersState, setUsersState] = useState([]);
 
-    // https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects
-    // https://www.andreasreiterer.at/react-useeffect-hook-loop/
     useEffect(() => {
         UserAdapter.list().then(users => setUsersState(users));
-    }, []);
+    }, []); // check tutorials > tech stack > react hooks for this []
 
     return (
         <div id='users-list'>
@@ -20,6 +18,6 @@ const Users = () => {
             }
         </div>
     );
-}
+};
 
 export default Users;

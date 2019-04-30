@@ -1,10 +1,10 @@
-<!-- start:source.tmpl.hbs -->
+<!-- start:readme.hbs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-		<title>BaseModel.js</title>
+		<title>Getting Started with Hapi</title>
 		<link rel="icon" type="image/x-icon" href="favicon.ico"/>
 		<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -44,7 +44,7 @@
 			</style>
 		<script type="text/javascript">
 			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Ollie Notes","systemSummary":"A nice way to take your coding notes","systemLogo":"img/ollie.jpg","systemColor":"#5611A4","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented exteral members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials And Guides","summary":"All available tutorials."}],"footer":"","copyright":"Ollie Notes Copyright © 2019","linenums":true,"collapseSymbols":true,"inverseNav":true,"inlineNav":false,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":true,"sort":"linenum, longname, version, since","search":true,"favicon":"favicon.ico","stylesheets":["css/override.css"],"scripts":[],"monospaceLinks":true,"cleverLinks":false,"default":{"staticFiles":{"paths":["./docs/static"]}},"useLongnameInNav":false,"showInheritedInNav":true,"date":false};
-			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_TOC_ENABLED = true;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
 </head>
@@ -65,13 +65,6 @@
 			</div>
 			<div class="navbar-collapse collapse" id="topNavigation">
 				<ul class="nav navbar-nav">
-								<li class="dropdown">
-									<a href="list_class.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-									<ul class="dropdown-menu">
-											<li><a href="BaseModel.html">BaseModel</a></li>
-											<li><a href="Note.html">Note</a></li>
-									</ul>
-								</li>
 								<li class="dropdown">
 									<a href="list_tutorial.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials And Guides<b class="caret"></b></a>
 									<ul class="dropdown-menu">
@@ -99,62 +92,32 @@
 	</header>
 	<!-- end:navbar.hbs -->		<div class="page-header">
 			<div class="container">
-				<span class="kind">source</span>
-				<h1><span class="name">BaseModel.js</span></h1>
+				<span class="kind">tutorial</span>
+				<h1><span class="title">Getting Started with Hapi</span></h1>
 			</div>
 		</div>
 	<div class="container content">
 		<div class="row">
-			<div class="col-md-12 main-content">
-		<section class="source-section">
-			<article></article>
-			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">const { Model } = require('objection');
-const knex = require('./knex');
-
-Model.knex(knex); // Give the knex object to objection.
-
-/**
- * A base class that lets us add generic queries to every model
- */
-class BaseModel extends Model {
-    /**
-     *  Essentially just a shortcut for `this.query`
-     * @return {array} An array of all instances of the model in the DB
-     */
-    static async all() {
-        return this.query();
-    }
-
-    /**
-     * Find an instance of a model based on the id
-     * @param {number} id - The id of the instance you want to find
-     * @return {object|undefined} The instance as an object or `undefined` if there is no match
-     */
-    static async find(id) {
-        const user = await this.query().where('id', '=', id);
-        return user[0];
-    }
-
-    /**
-     * Find all instances of a model based on the value of a given column
-     * @param {string} column - The name of the column
-     * @param {string|number} value - The value of the given column
-     * @return {array} An array of all matches, will be empty if no matches found
-     */
-    static async where(column, value) {
-        return this.query().where(column, '=', value);
-    }
-}
-
-module.exports = BaseModel;
-</code></pre>
+			<div class="col-md-9 main-content">
+						<ol class="breadcrumb">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="list_tutorial.html">Tutorials And Guides</a></li>
+							<li><a href="tutorial-tech-stack-tips.html">Tech Stack Info</a></li>
+							<li class="active">Getting Started with Hapi</li>
+						</ol>
+		<section class="tutorial-section">
+			<article><h1>Getting Started with Hapi.js</h1><p>Hapi js is a fun, light weight framework that gives you a lot of toys to play with
+right off the bat.</p></article>
 		</section>
 			</div>
+				<div class="col-md-3 side-content">
+					<nav class="toc hidden-print hidden-sm hidden-xs"></nav>
+				</div>
 		</div>
 	</div>
 	<footer>
 				<div class="copyright">Ollie Notes Copyright © 2019</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 10th Apr 2019 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on 22nd Apr 2019 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -181,4 +144,4 @@ module.exports = BaseModel;
 	
 </body>
 </html>
-<!-- end:source.tmpl.hbs -->
+<!-- end:readme.hbs -->

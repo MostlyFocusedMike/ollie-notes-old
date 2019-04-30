@@ -3,15 +3,19 @@
         "title": "Tech Stack Info",
         "summary": "Jumping off points for learning the tech in this project",
         "children": {
-            "getting-started-with-docker": {
+            "getting-started-docker": {
                 "title": "Getting Started with Docker"
             },
 
-            "getting-started-with-hapi": {
+            "getting-started-hapi": {
                 "title": "Getting Started with Hapi"
             },
-            "getting-started-with-jsdoc": {
+            "getting-started-jsdoc": {
                 "title": "Getting Started with JSDoc"
+            },
+            "getting-started-react-hooks": {
+                "title": "Getting Started with React Hooks",
+                "summary": "How to work with useState, useEffect, and useContext"
             }
         }
     },
