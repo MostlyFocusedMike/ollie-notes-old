@@ -21,8 +21,12 @@ class UserAdapter {
             .catch(console.log);
     }
 
-    static logInUser(user) {
+    static setCurrentUser(user) {
         if (user.isUser && !localStorage.username) localStorage.username = user.username;
+    }
+
+    static isCurrentUserSet() {
+        return !!localStorage.username;
     }
 }
 

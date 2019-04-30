@@ -17,7 +17,7 @@ class UserProfile extends React.Component {
         const { username } = this.props.match.params;
         UserAdapter.getOne(username, true)
             .then(user => this.setState({ user }, () => {
-                this.setState({ loaded: true }, () => UserAdapter.logInUser(user));
+                this.setState({ loaded: true }, () => UserAdapter.setCurrentUser(user));
             }));
     }
 
