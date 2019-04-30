@@ -15,9 +15,13 @@ class UserProfile extends React.Component {
 
     componentDidMount() {
         const { username } = this.props.match.params;
-        UserAdapter.getOne(username, true).then(user => this.setState({ user }, () => {
-            this.setState({ loaded: true });
-        }));
+        UserAdapter.getOne(username, true)
+            .then(user => this.setState({ user }, () => {
+                this.setState({ loaded: true }, () => {
+                    console.log('hi: ');
+                    if (user.isUser) localStorage.username = user.username;
+                });
+            }));
     }
 
     handleLogout = (e) => {
@@ -30,6 +34,9 @@ class UserProfile extends React.Component {
                         isUser: false,
                     },
                 });
+            })
+            .then(() => {
+                localStorage.removeItem('username');
             });
     }
 
