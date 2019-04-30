@@ -17,10 +17,7 @@ class UserProfile extends React.Component {
         const { username } = this.props.match.params;
         UserAdapter.getOne(username, true)
             .then(user => this.setState({ user }, () => {
-                this.setState({ loaded: true }, () => {
-                    console.log('hi: ');
-                    if (user.isUser) localStorage.username = user.username;
-                });
+                this.setState({ loaded: true }, () => UserAdapter.logInUser(user));
             }));
     }
 
@@ -34,9 +31,6 @@ class UserProfile extends React.Component {
                         isUser: false,
                     },
                 });
-            })
-            .then(() => {
-                localStorage.removeItem('username');
             });
     }
 

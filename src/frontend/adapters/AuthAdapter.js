@@ -7,7 +7,8 @@ class AuthAdapter {
             credentials: 'include',
         };
         return fetch(`${this.url}/logout`, options)
-            .then(r => r.json());
+            .then(r => r.json())
+            .then(() => localStorage.removeItem('username'));
     }
 }
 

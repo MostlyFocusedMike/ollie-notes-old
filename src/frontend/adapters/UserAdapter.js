@@ -16,10 +16,13 @@ class UserAdapter {
     }
 
     static list() {
-        console.log('this.url: ', this.url);
         return fetch(this.url)
             .then(r => r.json())
             .catch(console.log);
+    }
+
+    static logInUser(user) {
+        if (user.isUser && !localStorage.username) localStorage.username = user.username;
     }
 }
 
