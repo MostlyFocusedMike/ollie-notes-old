@@ -7,10 +7,6 @@ class UserAdapter {
             credentials: 'include', // fetch doesn't include cookies by default
         };
         return fetch(`${this.url}/${username}`, options)
-            .then((r) => {
-                console.log('r:', r);
-                return r;
-            })
             .then(r => r.json())
             .catch(console.log);
     }

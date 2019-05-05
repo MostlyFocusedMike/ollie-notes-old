@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { UserAdapter } from '../adapters';
 
 const Users = () => {
-    const [currentUserState, setCurrentUserState] = useState({
-        profile: 'TEST',
-    });
-
     return (
         <div id='nav-main'>
             <ul>
                 <li>Ollie Notes</li>
                 <li>Users</li>
                 <li>Notes</li>
-                <li>Profile</li>
+                {
+                    UserAdapter.isCurrentUserSet()
+                        ? <li>Profile</li>
+                        : <li>Login</li>
+                }
             </ul>
         </div>
     );

@@ -5,6 +5,7 @@
   "license": "ISC",
   "author": "Mike Cronin",
   "main": "src/backend/server/index.js",
+  "proxy": "http://localhost:8000",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MostlyFocusedMike/ollie-notes.git"
