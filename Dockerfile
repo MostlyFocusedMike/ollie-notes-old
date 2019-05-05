@@ -21,7 +21,7 @@ RUN npm install -g nodemon
 RUN npm ci
 RUN npx react-scripts build
 
-EXPOSE 8000
+EXPOSE 4000
 EXPOSE 3000
 
 # this command defaults to start our node server

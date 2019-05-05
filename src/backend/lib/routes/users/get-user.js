@@ -12,11 +12,11 @@ module.exports = {
             strategy: 'session',
             mode: 'try',
         },
-        cors: {
-            origin: ['*'],
-            headers: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'],
-            credentials: true,
-        },
+        // cors: {
+        //     origin: ['*'],
+        //     headers: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'],
+        //     credentials: true,
+        // },
         validate: {
             params: { // this lets us make our swagger docs dynamic as well
                 username: Joi.string().description('Username from GitHub'),
@@ -27,6 +27,8 @@ module.exports = {
             },
         },
         handler: async (request, h) => {
+            // console.log('Object.keys(request): ', Object.keys(request));
+            console.log('request.info: ', request.info);
             const {
                 params: { username },
                 query,

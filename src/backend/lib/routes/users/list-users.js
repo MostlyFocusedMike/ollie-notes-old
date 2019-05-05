@@ -8,7 +8,7 @@ module.exports = {
         tags: ['api', Constants.TAGS.USERS],
         description: 'Get profile info of all users',
         notes: "Use the 'metadata' query param to get rid of metadata",
-        cors: process.env.NODE_ENV !== 'production',
+        // cors: process.env.NODE_ENV !== 'production',
         validate: {
             query: {
                 metadata: Joi.boolean().description('Filter out user metadata'),

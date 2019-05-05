@@ -5,6 +5,9 @@ class UserAdapter {
         const options = {
             method: 'GET',
             credentials: 'include', // fetch doesn't include cookies by default
+            headers: {
+                accepts: 'application/json',
+            },
         };
         return fetch(`${this.url}/${username}`, options)
             .then(r => r.json())
@@ -26,6 +29,6 @@ class UserAdapter {
     }
 }
 
-UserAdapter.url = `${Constants.BACKEND_URL}api/v1/users`;
+UserAdapter.url = '/api/v1/users';
 
 export default UserAdapter;
