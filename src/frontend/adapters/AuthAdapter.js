@@ -5,6 +5,9 @@ class AuthAdapter {
         const options = {
             method: 'POST',
             credentials: 'include',
+            headers: {
+                accepts: 'application/json',
+            },
         };
         return fetch(`${this.url}/logout`, options)
             .then(r => r.json())
@@ -12,6 +15,6 @@ class AuthAdapter {
     }
 }
 
-AuthAdapter.url = `${Constants.BACKEND_URL}auth/v1`;
+AuthAdapter.url = '/auth/v1';
 
 export default AuthAdapter;

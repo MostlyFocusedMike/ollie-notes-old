@@ -25,6 +25,7 @@ class UserProfile extends React.Component {
         e.preventDefault();
         AuthAdapter.logout()
             .then(() => {
+                console.log('logged out');
                 this.setState({
                     user: {
                         ...this.state.user,
@@ -36,7 +37,6 @@ class UserProfile extends React.Component {
 
     render() {
         if (this.state.loaded) {
-            console.log('this.state.user: ', this.state.user);
             const { username, name, avatar } = this.state.user;
             return (
                 <div id='user-profile'>
