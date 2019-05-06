@@ -8,6 +8,6 @@ class NoteAdapter {
     }
 }
 
-NoteAdapter.url = `${Constants.BACKEND_URL}api/v1/notes`;
+NoteAdapter.url = `${Constants.BACKEND_URL}/api/v1/notes`;
 
 export default NoteAdapter;

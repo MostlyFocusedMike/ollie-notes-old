@@ -1,20 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { UserAdapter } from '../adapters';
 
 const Users = () => {
     return (
-        <div id='nav-main'>
+        <nav id='nav-main'>
             <ul>
-                <li>Ollie Notes</li>
-                <li>Users</li>
-                <li>Notes</li>
+                <li><Link to='/' id='nav-logo'>Ollie Notes</Link></li>
+                <li><Link to='/users'>Users</Link></li>
                 {
                     UserAdapter.isCurrentUserSet()
                         ? <li>Profile</li>
-                        : <li>Login</li>
+                        : <li><Link to='/login'>Login</Link></li>
                 }
             </ul>
-        </div>
+        </nav>
     );
 };
 
