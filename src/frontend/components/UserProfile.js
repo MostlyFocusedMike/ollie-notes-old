@@ -13,16 +13,18 @@ class UserProfile extends React.Component {
         this.state = this.initState;
     }
 
+    loadUser = (user) => {
+        if (user.isUser) this.context.setCurrentUser(user);
+        this.setState({
+            user,
+            loaded: true,
+        });
+    }
+
     componentDidMount() {
         const { username } = this.props.match.params;
         UserAdapter.getOne(username, true)
-            .then((user) => {
-                if (user.isUser) this.context.setCurrentUser(user);
-                return user;
-            })
-            .then(user => this.setState({ user }, () => {
-                this.setState({ loaded: true });
-            }));
+            .then((user) => { this.loadUser(user); });
     }
 
     handleLogout = (e) => {
@@ -40,9 +42,14 @@ class UserProfile extends React.Component {
     }
 
     render() {
-        console.log('this.context: ', this.context);
         if (this.state.loaded) {
-            const { username, name, avatar } = this.state.user;
+            const {
+                username,
+                name,
+                avatar,
+                isUser,
+            } = this.state.user;
+
             return (
                 <div id='user-profile'>
                     <h1>I am the user</h1>
@@ -50,7 +57,7 @@ class UserProfile extends React.Component {
                     <p>this is the name {name}</p>
                     <img src={avatar} />
                     {
-                        this.state.user.isUser
+                        isUser
                             ? <form onSubmit={this.handleLogout}>
                                 <input type='submit' value='Log Out'/>
                             </form>
