@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import AppContext from '../context';
 import { UserAdapter, AuthAdapter } from '../adapters';
 
 class UserProfile extends React.Component {
@@ -16,8 +16,12 @@ class UserProfile extends React.Component {
     componentDidMount() {
         const { username } = this.props.match.params;
         UserAdapter.getOne(username, true)
+            .then((user) => {
+                if (user.isUser) this.context.setCurrentUser(user);
+                return user;
+            })
             .then(user => this.setState({ user }, () => {
-                this.setState({ loaded: true }, () => UserAdapter.setCurrentUser(user));
+                this.setState({ loaded: true });
             }));
     }
 
@@ -36,6 +40,7 @@ class UserProfile extends React.Component {
     }
 
     render() {
+        console.log('this.context: ', this.context);
         if (this.state.loaded) {
             const { username, name, avatar } = this.state.user;
             return (
@@ -61,5 +66,7 @@ class UserProfile extends React.Component {
 UserProfile.propTypes = {
     match: PropTypes.object,
 };
+
+UserProfile.contextType = AppContext;
 
 export default UserProfile;

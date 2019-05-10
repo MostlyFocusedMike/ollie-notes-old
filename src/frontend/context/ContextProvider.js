@@ -6,14 +6,19 @@ class MyProvider extends React.Component {
     constructor() {
         super();
         this.state = {
+            currentUser: '',
         };
+    }
+
+    setCurrentUser = (user) => {
+        this.setState({ currentUser: user });
     }
 
     render() {
         const context = Object.assign(
             this.state,
             {
-                // functions
+                setCurrentUser: this.setCurrentUser,
             },
         );
 

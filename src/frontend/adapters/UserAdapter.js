@@ -1,5 +1,3 @@
-const Constants = require('../../constants');
-
 class UserAdapter {
     static getOne(username) {
         const options = {
@@ -18,14 +16,6 @@ class UserAdapter {
         return fetch(this.url)
             .then(r => r.json())
             .catch(console.log);
-    }
-
-    static setCurrentUser(user) {
-        if (user.isUser && !localStorage.username) localStorage.username = user.username;
-    }
-
-    static isCurrentUserSet() {
-        return !!localStorage.username;
     }
 }
 
