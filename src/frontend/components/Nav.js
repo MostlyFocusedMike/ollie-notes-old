@@ -11,7 +11,7 @@ const Users = () => {
                 <li><Link to='/users'>Users</Link></li>
                 {
                     context.currentUser.username
-                        ? <li>Profile</li>
+                        ? <li><Link to={`/users/${context.currentUser.username}`}>Profile</Link></li>
                         : <li><Link to='/login'>Login</Link></li>
                 }
             </ul>
