@@ -5,6 +5,7 @@ import Home from '../components/Home';
 import Users from '../components/Users';
 import UserProfile from '../components/UserProfile';
 import Login from '../components/Login';
+import AuthSuccess from '../components/AuthSuccess';
 
 const Routes = () => {
     return (
@@ -16,6 +17,10 @@ const Routes = () => {
             <Route
                 exact path='/login'
                 component = { Login }
+            />
+            <Route
+                exact path='/auth-success/:username'
+                component = { AuthSuccess }
             />
             <Route
                 exact path='/users'

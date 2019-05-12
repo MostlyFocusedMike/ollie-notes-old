@@ -28,7 +28,7 @@ module.exports = {
                 const user = await User.findOrCreateGitHub(userProfile);
 
                 cookieAuth.set({ username: user.username });
-                return h.redirect(`/auth-success/${user.username}`);
+                return h.redirect(`${Constants.FRONTEND_URL}/auth-success/${user.username}`);
             }
 
             return h.view('login', {
