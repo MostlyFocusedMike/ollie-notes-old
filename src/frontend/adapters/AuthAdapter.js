@@ -13,6 +13,11 @@ class AuthAdapter {
             .then(r => r.json())
             .then(() => localStorage.removeItem('username'));
     }
+
+    static setCurrentUser(context, username) {
+        localStorage.username = username;
+        context.setCurrentUser(username);
+    }
 }
 
 AuthAdapter.url = '/auth/v1';

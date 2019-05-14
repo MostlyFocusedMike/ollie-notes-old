@@ -34,7 +34,7 @@ class UserProfile extends React.Component {
                 console.log('logged out');
                 this.setState({ user: { ...this.state.user, isUser: false } })
             })
-            .then(() => { this.context.setCurrentUser({}); });
+            .then(() => { this.context.setCurrentUser(''); });
     }
 
     render() {

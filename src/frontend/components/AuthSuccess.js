@@ -1,23 +1,22 @@
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router';
 import React, { useContext, useEffect } from 'react';
 import appContext from '../context';
+import { AuthAdapter } from '../adapters';
 
 const AuthSuccess = (props) => {
+    const { match: { params: { username } } } = props;
     const context = useContext(appContext);
 
     useEffect(() => {
-        localStorage.username = props.match.params.username;
-        context.setCurrentUser(props.match.params.username);
-    }, []); // check tutorials > tech stack > react hooks for this []
-    return (
-        <div>
-            <p>Hello there friend</p>
-        </div>
-    );
+        AuthAdapter.setCurrentUser(context, username);
+    }, []);
+
+    return <Redirect to={`/users/${username}`}/>;
 };
 
 AuthSuccess.propTypes = {
-    params: PropTypes.object,
+    match: PropTypes.object,
 };
 
 export default AuthSuccess;
