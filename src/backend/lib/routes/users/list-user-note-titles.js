@@ -3,10 +3,10 @@ const Constants = require('../../../../constants');
 
 module.exports = {
     method: 'GET',
-    path: '/api/v1/users/{username}/notes',
+    path: '/api/v1/users/{username}/note-titles',
     options: {
-        tags: ['api', Constants.TAGS.NOTES],
-        description: 'Get all notes belonging to a user',
+        tags: ['api', Constants.TAGS.USERS],
+        description: 'Get all note titles for a user',
         // notes: '',
         validate: {
             params: { // this lets us make our swagger docs dynamic as well
@@ -21,8 +21,7 @@ module.exports = {
             } = request;
 
             const [user] = await User.where('username', username);
-            console.log('user: ', user);
-            return user.getNotes();
+            return user.listNoteTitles();
         },
     },
 };

@@ -7,7 +7,7 @@ module.exports = {
     options: {
         tags: ['api', Constants.TAGS.USERS],
         description: 'Get user profile info',
-        notes: "Use the 'notes' and 'metadata' query params for better info",
+        notes: "Use the 'metadata' query params for better info",
         auth: {
             strategy: 'session',
             mode: 'try',
@@ -17,7 +17,6 @@ module.exports = {
                 username: Joi.string().description('Username from GitHub'),
             },
             query: {
-                notes: Joi.boolean().description("Get all of the user's notes"),
                 metadata: Joi.boolean().description('Include user metadata'),
             },
         },
@@ -35,7 +34,6 @@ module.exports = {
 
             if (!user) return { msg: 'There is no user' };
             // if (user.isLoggedIn(request)) user.isUser = true; // TODO would you ever need this?
-            if (query.notes) user.notes = await user.getNotes(true);
             return user;
         },
     },

@@ -34,6 +34,10 @@ class User extends UserDB {
                 .select('id', 'title', 'text');
     }
 
+    async listNoteTitles() {
+        return this.$relatedQuery('notes').select('id', 'title');
+    }
+
     isLoggedIn(request) {
         const {
             auth: { isAuthenticated, credentials },
