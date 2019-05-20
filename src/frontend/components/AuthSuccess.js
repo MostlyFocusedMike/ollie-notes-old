@@ -9,7 +9,7 @@ const AuthSuccess = (props) => {
     const context = useContext(appContext);
 
     useEffect(() => {
-        AuthAdapter.setCurrentUser(context, username);
+        AuthAdapter.setLoggedInUser(context, username);
     }, []);
 
     return <Redirect to={`/users/${username}`}/>;

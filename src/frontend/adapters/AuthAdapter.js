@@ -1,7 +1,5 @@
-const Constants = require('../../constants');
-
 class AuthAdapter {
-    static logout() {
+    static logout(context) {
         const options = {
             method: 'POST',
             credentials: 'include',
@@ -11,12 +9,17 @@ class AuthAdapter {
         };
         return fetch(`${this.url}/logout`, options)
             .then(r => r.json())
-            .then(() => localStorage.removeItem('username'));
+            .then(() => localStorage.removeItem('username'))
+            .then(() => context.setLoggedInUser(''));
     }
 
-    static setCurrentUser(context, username) {
+    static setLoggedInUser(context, username) {
         localStorage.username = username;
-        context.setCurrentUser(username);
+        context.setLoggedInUser(username);
+    }
+
+    static checkLoggedIn(context) {
+        if (localStorage.username) context.setLoggedInUser(localStorage.username);
     }
 }
 

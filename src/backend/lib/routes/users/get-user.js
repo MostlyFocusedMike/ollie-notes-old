@@ -12,11 +12,6 @@ module.exports = {
             strategy: 'session',
             mode: 'try',
         },
-        // cors: {
-        //     origin: ['*'],
-        //     headers: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'],
-        //     credentials: true,
-        // },
         validate: {
             params: { // this lets us make our swagger docs dynamic as well
                 username: Joi.string().description('Username from GitHub'),
@@ -27,7 +22,6 @@ module.exports = {
             },
         },
         handler: async (request, h) => {
-            // console.log('Object.keys(request): ', Object.keys(request));
             console.log('request.info: ', request.info);
             const {
                 params: { username },
@@ -40,7 +34,7 @@ module.exports = {
                 : await User.where('username', username);
 
             if (!user) return { msg: 'There is no user' };
-            if (user.isLoggedIn(request)) user.isUser = true;
+            // if (user.isLoggedIn(request)) user.isUser = true; // TODO would you ever need this?
             if (query.notes) user.notes = await user.getNotes(true);
             return user;
         },
