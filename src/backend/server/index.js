@@ -3,6 +3,7 @@ const Glue = require('glue');
 const Handlebars = require('handlebars');
 const Manifest = require('./manifest');
 const User = require('../models/user');
+const Note = require('../models/note');
 
 exports.deployment = async (start) => {
     const manifest = Manifest.get('/');
@@ -25,6 +26,7 @@ exports.deployment = async (start) => {
 
     server.app.Database = {
         User,
+        Note,
     };
 
     if (!start) return server;
