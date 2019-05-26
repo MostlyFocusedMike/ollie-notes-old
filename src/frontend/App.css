@@ -1,1 +1,25 @@
+div {
+    border: 1px solid #FFF;
+    margin: 0.25rem;
+}
 
+#nav-main {
+    background:rgb(75, 0, 75);
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#nav-main li {
+    display: inline-block;
+}
+
+#nav-main a {
+    padding: 1rem;
+    margin: 0.25rem;
+    font-size: 2rem;
+}
+
+#notes-page {
+    background: #222;
+}
