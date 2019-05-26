@@ -3,7 +3,8 @@ const User = require('../../models/user');
 
 exports.seed = async (knex) => {
     /* Using objection we can neatly create one file with all our relationships built dynamically */
-    await knex('users').del(); // our cascade delete protects us from having to delete child notes first
+    await knex('users').del();
+    await knex('notes').del();
 
     await User
         .query()
