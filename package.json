@@ -24,6 +24,7 @@
     "kickoff": "./scripts/kickoff.sh",
     "log:web": "docker-compose logs -f web",
     "migrate": "docker-compose exec web npx knex migrate:latest",
+    "rollback": "docker-compose exec web npx knex migrate:rollback",
     "seed": "docker-compose exec web npx knex seed:run",
     "setup:db": "./scripts/setup_db.sh",
     "start": "docker-compose up -d && npm run webpack:watch",

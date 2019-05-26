@@ -1,3 +1,4 @@
+const Path = require('path');
 const { Model } = require('objection');
 const knex = require('../knex');
 
@@ -13,16 +14,31 @@ class NoteDB extends Model {
             type: 'object',
             required: [
                 'title',
-                'user_id',
             ],
 
             properties: {
                 id: { type: 'integer' },
-                user_id: { type: 'integer' },
                 title: { type: 'string' },
                 text: { type: 'string' },
                 created_at: { type: 'string' },
                 updated_at: { type: 'string' },
+            },
+        };
+    }
+
+    static get relationMappings() {
+        return {
+            author: {
+                relation: Model.HasOneThroughRelation,
+                modelClass: Path.join(__dirname, '..', 'user'),
+                join: {
+                    from: 'notes.id',
+                    through: {
+                        from: 'author_notes.note_id',
+                        to: 'author_notes.user_id',
+                    },
+                    to: 'users.id',
+                },
             },
         };
     }

@@ -35,11 +35,15 @@ class UserDB extends Model {
     static get relationMappings() {
         return {
             notes: {
-                relation: Model.HasManyRelation,
+                relation: Model.ManyToManyRelation,
                 modelClass: Path.join(__dirname, '..', 'note'),
                 join: {
                     from: 'users.id',
-                    to: 'notes.user_id',
+                    through: {
+                        from: 'author_notes.user_id',
+                        to: 'author_notes.note_id',
+                    },
+                    to: 'notes.id',
                 },
             },
         };
