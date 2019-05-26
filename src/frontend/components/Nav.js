@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import appContext from '../context';
 
@@ -12,7 +12,10 @@ const Users = () => {
                 <li><Link to='/users'>Users</Link></li>
                 {
                     context.loggedInUser
-                        ? <li><Link to={`/users/${context.loggedInUser}`}>Profile</Link></li>
+                        ? <Fragment>
+                            <li><Link to={`/users/${context.loggedInUser}`}>Profile</Link></li>
+                            <li><Link to={`/users/${context.loggedInUser}/notes`}>Notes</Link></li>
+                        </Fragment>
                         : <li><Link to='/login'>Login</Link></li>
                 }
             </ul>
