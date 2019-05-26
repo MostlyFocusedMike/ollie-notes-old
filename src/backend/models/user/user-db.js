@@ -40,8 +40,8 @@ class UserDB extends Model {
                 join: {
                     from: 'users.id',
                     through: {
-                        from: 'user_notes.user_id',
-                        to: 'user_notes.note_id',
+                        from: 'author_notes.user_id',
+                        to: 'author_notes.note_id',
                     },
                     to: 'notes.id',
                 },

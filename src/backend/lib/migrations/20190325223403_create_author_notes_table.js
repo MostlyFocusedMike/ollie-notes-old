@@ -1,5 +1,5 @@
 exports.up = (knex) => {
-    return knex.schema.createTable('user_notes', (table) => {
+    return knex.schema.createTable('author_notes', (table) => {
         table.increments().primary();
         table.integer('user_id').unsigned().notNullable();
         table.foreign('user_id').references('id').inTable('users').onDelete('CASCADE'); // cascade deletes this join when the foreign row is deleted
@@ -11,5 +11,5 @@ exports.up = (knex) => {
 };
 
 exports.down = (knex) => {
-    return knex.schema.dropTable('user_notes');
+    return knex.schema.dropTable('author_notes');
 };

@@ -34,8 +34,8 @@ class NoteDB extends Model {
                 join: {
                     from: 'notes.id',
                     through: {
-                        from: 'user_notes.note_id',
-                        to: 'user_notes.user_id',
+                        from: 'author_notes.note_id',
+                        to: 'author_notes.user_id',
                     },
                     to: 'users.id',
                 },
