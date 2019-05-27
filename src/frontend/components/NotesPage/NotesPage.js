@@ -4,8 +4,6 @@ import NotesSidebar from './NotesSidebar';
 import NoteViewer from './NoteViewer';
 
 const NotesPage = (props) => {
-    const { username } = props.match.params;
-
     return (
         <div id='notes-page'>
             <NotesSidebar />
