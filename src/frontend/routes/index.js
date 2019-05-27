@@ -16,24 +16,24 @@ const Routes = () => {
                 component = { Home }
             />
             <Route
-                exact path='/login'
+                path='/login'
                 component = { Login }
             />
             <Route
-                exact path='/auth-success/:username'
+                path='/auth-success/:username'
                 component = { AuthSuccess }
             />
             <Route
-                exact path='/users'
-                component = { Users }
+                path='/users/:username/notes'
+                component = { NotesPage }
             />
             <Route
                 exact path='/users/:username'
                 component = { UserProfile }
             />
             <Route
-                exact path='/users/:username/notes'
-                component = { NotesPage }
+                exact path='/users'
+                component = { Users }
             />
         </Switch>
     );
