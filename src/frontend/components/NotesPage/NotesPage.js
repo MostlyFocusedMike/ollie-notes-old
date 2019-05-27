@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NotesSidebar from './NotesSidebar';
+import NoteViewer from './NoteViewer';
 
 const NotesPage = (props) => {
     const { username } = props.match.params;
 
     return (
         <div id='notes-page'>
-            <h1>Notes for { username }</h1>
             <NotesSidebar />
+            <NoteViewer />
         </div>
     );
 };

@@ -21,5 +21,16 @@ div {
 }
 
 #notes-page {
-    background: #222;
+    background: pink;
+    display: flex;
+    justify-content: flex-start;
+    height: 80vh;
+}
+
+#notes-sidebar {
+    max-width: 12em;
+}
+
+#note-viewer {
+    flex: 1;
 }
