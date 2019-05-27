@@ -9,11 +9,11 @@ const NoteRoutes = (props) => {
     return (
         <Switch>
             <Route
-                path='users/:username/notes/ok'
+                path={`${props.match.path}/:noteId`}
                 component = { MDInput }
             />
             <Route
-                path='/users/:username/notes'
+                path={`${props.match.path}`}
                 component = { NewNote }
             />
         </Switch>
