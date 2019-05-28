@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
-import NewNote from '../components/NotesPage/NewNote';
+import NotesHome from '../components/NotesPage/NotesHome';
 import NoteNotFound from '../components/NotesPage/NoteNotFound';
 import MainViewer from '../components/NotesPage/MainViewer';
 
 const NoteRoutes = (props) => {
-    console.log('props routes: ', props);
     return (
         <Switch>
             <Route
@@ -19,7 +18,7 @@ const NoteRoutes = (props) => {
             />
             <Route
                 path={`${props.match.path}`}
-                component = { NewNote }
+                component = { NotesHome }
             />
         </Switch>
     );

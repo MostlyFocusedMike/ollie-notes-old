@@ -4,10 +4,9 @@ import NotesSidebar from './NotesSidebar';
 import NoteRoutes from '../../routes/NoteRoutes';
 
 const NotesPage = (props) => {
-    console.log('props.match: ', props.match);
     return (
         <div id='notes-page'>
-            <NotesSidebar />
+            <NotesSidebar match={props.match} />
             <NoteRoutes match={props.match} />
         </div>
     );

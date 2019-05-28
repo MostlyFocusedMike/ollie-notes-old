@@ -4,7 +4,6 @@ import appContext from '../context';
 
 const Users = () => {
     const context = useContext(appContext);
-    console.log('context in the nav: ', context);
     return (
         <nav id='nav-main'>
             <ul>
