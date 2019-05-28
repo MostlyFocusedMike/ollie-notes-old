@@ -50,7 +50,7 @@ class UserDB extends Model {
     }
 
     static get selectedProperties() {
-        return [
+        const properties = [
             'id',
             'github_id',
             'name',
@@ -58,6 +58,7 @@ class UserDB extends Model {
             'avatar',
             'email',
         ];
+        return properties.map(property => `${this.tableName}.${property}`);
     }
 }
 
