@@ -12,7 +12,7 @@ const App = (props) => {
     }, []);
 
     return (
-        <div className="App">
+        <div className="app">
             <Nav />
             <Routes />
             <h1>Hello There</h1>
