@@ -12,6 +12,7 @@ class UserAdapter {
     }
 
     static listUserNoteTitles(username) {
+        console.log('the url: ', `${this.url}/${username}/note-titles`);
         return fetch(`${this.url}/${username}/note-titles`, this.options)
             .then(r => r.json())
             .catch(console.log);
