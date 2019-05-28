@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { UserAdapter } from '../../adapters';
 import appContext from '../../context';
+import NoteTitlesHelper from './NoteTitlesHelper';
 
 const UserNoteTitles = (props) => {
     const [userNoteTitles, setUserNoteTitles] = useState([]);
@@ -19,9 +20,11 @@ const UserNoteTitles = (props) => {
     return (
         <div id='user-note-titles'>
             <h1>User Notes</h1>
-            <ul>
-                <li>Dummy note</li>
-            </ul>
+            {
+                userNoteTitles.length > 0
+                    ? <NoteTitlesHelper userNoteTitles={ userNoteTitles }/>
+                    : ''
+            }
         </div>
     );
 };
