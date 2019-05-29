@@ -44,12 +44,13 @@ class NoteDB extends Model {
     }
 
     static get selectedProperties() {
-        return [
+        const properties = [
             'id',
             'user_id',
             'title',
             'text',
         ];
+        return properties.map(property => `${this.tableName}.${property}`);
     }
 }
 

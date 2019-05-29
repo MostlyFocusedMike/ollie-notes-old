@@ -9,7 +9,7 @@ const NotesPage = (props) => {
         <div id='notes-sidebar'>
             <h1>NOTES SIDEBAR</h1>
             <Link to={props.match.url}><button>Notes Home</button></Link>
-            <UserNoteTitles />
+            <UserNoteTitles match={props.match} />
             <VideoNoteTitles />
         </div>
     );

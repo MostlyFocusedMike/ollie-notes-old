@@ -31,11 +31,11 @@ class User extends UserDB {
             ? this.$relatedQuery('notes')
             : this
                 .$relatedQuery('notes')
-                .select('id', 'title', 'text');
+                .select('notes.id', 'notes.title', 'notes.text');
     }
 
     async listNoteTitles() {
-        return this.$relatedQuery('notes').select('id', 'title');
+        return this.$relatedQuery('notes').select('notes.id', 'notes.title');
     }
 
     isLoggedIn(request) {

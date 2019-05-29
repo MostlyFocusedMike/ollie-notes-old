@@ -1,7 +1,7 @@
 const Bell = require('bell');
 
 // quickly swap between fake users for dev and testing
-// process.env.SEED_USER_GITHUB_ID = 11111111;
+process.env.SEED_USER_GITHUB_ID = 11111111;
 // process.env.SEED_USER_GITHUB_ID = 22222222;
 exports.plugins = [{
     name: 'bell-with-simulate',
