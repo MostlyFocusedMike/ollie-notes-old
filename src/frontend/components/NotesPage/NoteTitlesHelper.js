@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const NoteTitlesList = (props) => {
@@ -6,7 +7,14 @@ const NoteTitlesList = (props) => {
         <ul>
             {
                 props.userNoteTitles.map((obj, idx) => {
-                    return <li key={`${obj.title}-${idx}`}>{obj.title}</li>;
+                    return (
+                        <Link
+                            to={`${props.match.url}/${obj.id}`}
+                            key={`${obj.title}-${idx}`}
+                        >
+                            <li >{obj.title}</li>
+                        </Link>
+                    );
                 })
             }
         </ul>
@@ -15,6 +23,7 @@ const NoteTitlesList = (props) => {
 
 NoteTitlesList.propTypes = {
     userNoteTitles: PropTypes.array,
+    match: PropTypes.object,
 };
 
 export default NoteTitlesList;

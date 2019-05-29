@@ -31,7 +31,7 @@ module.exports = {
                 return h.redirect(`${Constants.FRONTEND_URL}/auth-success/${user.username}`);
             }
 
-            return h.view('login', {
+            return h.view('login', { // TODO update this
                 err: 'Could not authenticate with GitHub.',
             }).code(400);
         },

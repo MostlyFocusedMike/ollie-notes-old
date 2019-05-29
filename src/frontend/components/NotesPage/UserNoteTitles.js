@@ -16,13 +16,12 @@ const UserNoteTitles = (props) => {
         }
     }, [loggedInUser]);
 
-    console.log('userNoteTitles: ', userNoteTitles);
     return (
         <div id='user-note-titles'>
             <h1>User Notes</h1>
             {
                 userNoteTitles.length > 0
-                    ? <NoteTitlesHelper userNoteTitles={ userNoteTitles }/>
+                    ? <NoteTitlesHelper userNoteTitles={ userNoteTitles } match={ props.match } />
                     : ''
             }
         </div>
