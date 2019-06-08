@@ -12,10 +12,6 @@ class NoteDB extends Model {
     static get jsonSchema() {
         return {
             type: 'object',
-            required: [
-                'title',
-            ],
-
             properties: {
                 id: { type: 'integer' },
                 title: { type: 'string' },

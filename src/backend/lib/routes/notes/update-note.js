@@ -6,7 +6,7 @@ module.exports = {
     path: '/api/v1/notes/{noteId}',
     options: {
         tags: ['api', Constants.TAGS.NOTES],
-        description: 'Get a note from id',
+        description: "Update a note's title and text",
         // notes: "",
         auth: {
             strategy: 'session',
@@ -17,8 +17,8 @@ module.exports = {
                 noteId: Joi.number().description('Id for note'),
             },
             payload: {
-                title: Joi.string(),
-                text: Joi.string(),
+                title: Joi.string().description('Title of note'),
+                text: Joi.string().description('Actual note content'),
             },
         },
         handler: async (request, h) => {
@@ -28,7 +28,9 @@ module.exports = {
                 payload,
             } = request;
 
-            return { id: noteId, ...payload };
+            const note = await Note.update({ id: noteId, ...payload });
+            if (!note) return h.response({ msg: 'no note' }).code(404);
+            return note;
         },
     },
 };
