@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { NoteAdapter } from '../../adapters';
 
 const MDInput = (props) => {
-    console.log('props: ', props);
-
+    const { params } = props.match;
     const [currentNote, setCurrentNote] = useState({
         title: '',
         text: '',
@@ -14,12 +14,12 @@ const MDInput = (props) => {
     };
 
     useEffect(() => {
-        NoteAdapter.getOne(1)
+        NoteAdapter.getOne(params.noteId)
             .then((note) => {
                 if (note) setCurrentNote({ title: note.title, text: note.text });
                 // TODO handle missing note redirect properly
             });
-    }, []);
+    }, [params]);
 
 
     return (
@@ -44,6 +44,10 @@ const MDInput = (props) => {
 
         </div>
     );
+};
+
+MDInput.propTypes = {
+    match: PropTypes.object,
 };
 
 export default MDInput;
