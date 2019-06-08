@@ -31,6 +31,20 @@ div {
     max-width: 12em;
 }
 
-#note-viewer {
-    flex: 1;
+#main-viewer {
+    width: 100%;
+}
+
+#md-input {
+    width: 50%;
+}
+
+input, textarea {
+    display: block;
+}
+
+textarea {
+    width: 95%;
+    margin: 1rem auto;
+    height: 60vh;
 }
