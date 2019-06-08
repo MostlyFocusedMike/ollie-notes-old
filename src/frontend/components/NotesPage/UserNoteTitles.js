@@ -5,7 +5,7 @@ import appContext from '../../context';
 import NoteTitlesHelper from './NoteTitlesHelper';
 
 const UserNoteTitles = (props) => {
-    const [userNoteTitles, setUserNoteTitles] = useState([]);
+    const [userNoteTitles, setUserNoteTitles] = useState([]); // TODO figure out why this isn't set immediately as []
     const context = useContext(appContext);
     const { loggedInUser } = context;
 
@@ -20,7 +20,7 @@ const UserNoteTitles = (props) => {
         <div id='user-note-titles'>
             <h1>User Notes</h1>
             {
-                userNoteTitles.length > 0
+                userNoteTitles && userNoteTitles.length > 0 // TODO this isn't [] it's undefined
                     ? <NoteTitlesHelper userNoteTitles={ userNoteTitles } match={ props.match } />
                     : ''
             }

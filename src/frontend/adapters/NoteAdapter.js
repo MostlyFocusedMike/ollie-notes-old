@@ -1,13 +1,18 @@
-const Constants = require('../../constants');
-
 class NoteAdapter {
-    static list() {
-        return fetch(this.url)
+    static getOne(noteId) {
+        return fetch(`${this.url}/${noteId}`, this.options)
             .then(r => r.json())
             .catch(console.log);
     }
 }
 
-NoteAdapter.url = `${Constants.BACKEND_URL}/api/v1/notes`;
+NoteAdapter.url = '/api/v1/notes';
+NoteAdapter.options = {
+    method: 'GET',
+    credentials: 'include', // fetch doesn't include cookies by default
+    headers: {
+        accepts: 'application/json',
+    },
+};
 
 export default NoteAdapter;
