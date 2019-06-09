@@ -5,6 +5,7 @@ import { NoteAdapter } from '../../adapters';
 const MDInput = (props) => {
     const { params } = props.match;
     const [currentNote, setCurrentNote] = useState({
+        id: 0,
         title: '',
         text: '',
     });
@@ -16,13 +17,17 @@ const MDInput = (props) => {
     useEffect(() => {
         NoteAdapter.getOne(params.noteId)
             .then((note) => {
-                if (note) setCurrentNote({ title: note.title, text: note.text });
+                if (note) setCurrentNote({ id: note.id, title: note.title, text: note.text });
                 // TODO handle missing note redirect properly
             });
     }, [params]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        NoteAdapter.update(currentNote)
+            .then((note) => {
+                console.log('note: ', note);
+            });
         console.log('cancelled');
     };
 
