@@ -9,9 +9,13 @@ const MDInput = (props) => {
         title: '',
         text: '',
     });
+    const [alertVisible, setAlertVisible] = useState(false);
 
     const handleChange = (e) => {
-        setCurrentNote({ [e.target.name]: e.target.value });
+        setCurrentNote({
+            ...currentNote,
+            [e.target.name]: e.target.value,
+        });
     };
 
     useEffect(() => {
@@ -22,13 +26,20 @@ const MDInput = (props) => {
             });
     }, [params]);
 
+    const handleShowAlert = () => {
+        setAlertVisible(true);
+
+        setTimeout(() => {
+            setAlertVisible(false);
+        }, 2000);
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         NoteAdapter.update(currentNote)
             .then((note) => {
-                console.log('note: ', note);
+                handleShowAlert();
             });
-        console.log('cancelled');
     };
 
     return (
@@ -52,6 +63,11 @@ const MDInput = (props) => {
                     onChange={handleChange}
                 />
                 <input type='submit' value='Save'/>
+                {
+                    alertVisible
+                        ? <div id='save-alert'><p>Saved!</p></div>
+                        : ''
+                }
             </form>
 
         </div>
