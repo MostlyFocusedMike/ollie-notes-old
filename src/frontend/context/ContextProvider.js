@@ -7,6 +7,7 @@ class MyProvider extends React.Component {
         super();
         this.state = {
             loggedInUser: '',
+            refreshTitles: false,
         };
     }
 
@@ -14,11 +15,16 @@ class MyProvider extends React.Component {
         this.setState({ loggedInUser: user });
     }
 
+    setTitlesRefresh = (isRefresh) => {
+        this.setState({ refreshTitles: isRefresh });
+    }
+
     render() {
         const context = Object.assign(
             this.state,
             {
                 setLoggedInUser: this.setLoggedInUser,
+                setTitlesRefresh: this.setTitlesRefresh,
             },
         );
 
