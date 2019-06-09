@@ -21,10 +21,16 @@ const MDInput = (props) => {
             });
     }, [params]);
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('cancelled');
+    };
 
     return (
         <div id='md-input'>
-            <form>
+            <form
+                onSubmit={handleSubmit}
+            >
                 <label htmlFor='note-title'>Note Title: </label>
                 <input
                     id='note-title'
@@ -40,6 +46,7 @@ const MDInput = (props) => {
                     value={currentNote.text}
                     onChange={handleChange}
                 />
+                <input type='submit' value='Save'/>
             </form>
 
         </div>
