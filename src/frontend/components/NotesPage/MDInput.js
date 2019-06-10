@@ -11,16 +11,9 @@ const MDInput = (props) => {
         title: '',
         text: '',
     });
-    const [isNoteTitleNew, setIsNoteTitleNew] = useState(false);
-    const [alertVisible, setAlertVisible] = useState(false);
+    const [hasTitleChanged, setHasTitleChanged] = useState(false);
+    const [isAlertVisible, setIsAlertVisible] = useState(false);
     const context = useContext(appContext);
-
-    const handleChange = (e) => {
-        setCurrentNote({
-            ...currentNote,
-            [e.target.name]: e.target.value,
-        });
-    };
 
     // initial load and all page changes
     useEffect(() => {
@@ -33,29 +26,30 @@ const MDInput = (props) => {
 
     // update state when title changes
     useEffect(() => {
-        if (!isNoteTitleNew) setIsNoteTitleNew(true);
+        if (!hasTitleChanged) setHasTitleChanged(true);
     }, [currentNote.title]);
 
-    const handleShowAlert = () => {
-        setAlertVisible(true);
+    const showAlert = () => {
+        setIsAlertVisible(true);
+        setTimeout(() => setIsAlertVisible(false), 2000);
+    };
 
-        setTimeout(() => {
-            setAlertVisible(false);
-        }, 2000);
+    const updateTitlesIfNew = (shouldRefresh) => {
+        if (shouldRefresh) {
+            context.setRefreshTitles(true);
+            setHasTitleChanged(false);
+        }
+    };
+
+    const handleChange = (e) => {
+        setCurrentNote({ ...currentNote, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         NoteAdapter.update(currentNote)
-            .then((note) => {
-                handleShowAlert();
-            })
-            .then(() => {
-                if (isNoteTitleNew) {
-                    context.setRefreshTitles(true);
-                    setIsNoteTitleNew(false);
-                }
-            });
+            .then(() => showAlert())
+            .then(() => updateTitlesIfNew(hasTitleChanged));
     };
 
     return (
@@ -64,8 +58,7 @@ const MDInput = (props) => {
                 handleSubmit={handleSubmit}
                 handleChange={handleChange}
                 currentNote={currentNote}
-                alertVisible={alertVisible}
-                handleShowAlert={handleShowAlert}
+                isAlertVisible={isAlertVisible}
             />
         </div>
     );

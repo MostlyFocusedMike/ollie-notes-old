@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const MDInput = (props) => {
@@ -6,7 +6,7 @@ const MDInput = (props) => {
         handleSubmit,
         handleChange,
         currentNote,
-        alertVisible,
+        isAlertVisible,
     } = props;
 
     return (
@@ -30,7 +30,7 @@ const MDInput = (props) => {
             />
             <input type='submit' value='Save'/>
             {
-                alertVisible
+                isAlertVisible
                     ? <div id='save-alert'><p>Saved!</p></div>
                     : ''
             }
@@ -42,7 +42,7 @@ MDInput.propTypes = {
     handleSubmit: PropTypes.func,
     handleChange: PropTypes.func,
     currentNote: PropTypes.object,
-    alertVisible: PropTypes.bool,
+    isAlertVisible: PropTypes.bool,
 };
 
 export default MDInput;
