@@ -9,6 +9,7 @@ const MDInput = (props) => {
         title: '',
         text: '',
     });
+    const [isNoteTitleNew, setIsNoteTitleNew] = useState(false);
     const [alertVisible, setAlertVisible] = useState(false);
 
     const handleChange = (e) => {
@@ -26,6 +27,10 @@ const MDInput = (props) => {
             });
     }, [params]);
 
+    useEffect(() => {
+        if (!isNoteTitleNew) setIsNoteTitleNew(true);
+    }, [currentNote.title]);
+
     const handleShowAlert = () => {
         setAlertVisible(true);
 
@@ -39,6 +44,12 @@ const MDInput = (props) => {
         NoteAdapter.update(currentNote)
             .then((note) => {
                 handleShowAlert();
+            })
+            .then(() => {
+                if (isNoteTitleNew) {
+                    console.log('trigger update of titles');
+                    setIsNoteTitleNew(false);
+                }
             });
     };
 

@@ -7,8 +7,9 @@ import NoteTitlesHelper from './NoteTitlesHelper';
 const UserNoteTitles = (props) => {
     const [userNoteTitles, setUserNoteTitles] = useState([]); // TODO figure out why this isn't set immediately as []
     const context = useContext(appContext);
-    const { loggedInUser } = context;
+    const { loggedInUser, refreshTitles } = context;
 
+    console.log('refreshTitles: ', refreshTitles);
     useEffect(() => {
         if (loggedInUser) {
             UserAdapter.listUserNoteTitles(loggedInUser)

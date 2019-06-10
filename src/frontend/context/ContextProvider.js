@@ -15,7 +15,7 @@ class MyProvider extends React.Component {
         this.setState({ loggedInUser: user });
     }
 
-    setTitlesRefresh = (isRefresh) => {
+    setRefreshTitles = (isRefresh) => {
         this.setState({ refreshTitles: isRefresh });
     }
 
@@ -24,7 +24,7 @@ class MyProvider extends React.Component {
             this.state,
             {
                 setLoggedInUser: this.setLoggedInUser,
-                setTitlesRefresh: this.setTitlesRefresh,
+                setRefreshTitles: this.setRefreshTitles,
             },
         );
 
