@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { NoteAdapter } from '../../adapters';
+import appContext from '../../context';
 
 const MDInput = (props) => {
     const { params } = props.match;
@@ -11,6 +12,7 @@ const MDInput = (props) => {
     });
     const [isNoteTitleNew, setIsNoteTitleNew] = useState(false);
     const [alertVisible, setAlertVisible] = useState(false);
+    const context = useContext(appContext);
 
     const handleChange = (e) => {
         setCurrentNote({
@@ -48,6 +50,7 @@ const MDInput = (props) => {
             .then(() => {
                 if (isNoteTitleNew) {
                     console.log('trigger update of titles');
+                    context.setRefreshTitles(true);
                     setIsNoteTitleNew(false);
                 }
             });

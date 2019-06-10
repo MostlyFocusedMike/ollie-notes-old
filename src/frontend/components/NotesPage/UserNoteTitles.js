@@ -9,13 +9,18 @@ const UserNoteTitles = (props) => {
     const context = useContext(appContext);
     const { loggedInUser, refreshTitles } = context;
 
-    console.log('refreshTitles: ', refreshTitles);
     useEffect(() => {
         if (loggedInUser) {
             UserAdapter.listUserNoteTitles(loggedInUser)
                 .then(titles => setUserNoteTitles(titles));
         }
     }, [loggedInUser]);
+
+    useEffect(() => {
+        UserAdapter.listUserNoteTitles(loggedInUser)
+            .then(titles => setUserNoteTitles(titles))
+            .then(() => context.setRefreshTitles(false));
+    }, [refreshTitles]);
 
     return (
         <div id='user-note-titles'>
