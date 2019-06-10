@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { NoteAdapter } from '../../adapters';
 import appContext from '../../context';
+import MDInputForm from './MDInputForm';
 
 const MDInput = (props) => {
     const { params } = props.match;
@@ -21,6 +22,7 @@ const MDInput = (props) => {
         });
     };
 
+    // initial load and all page changes
     useEffect(() => {
         NoteAdapter.getOne(params.noteId)
             .then((note) => {
@@ -29,6 +31,7 @@ const MDInput = (props) => {
             });
     }, [params]);
 
+    // update state when title changes
     useEffect(() => {
         if (!isNoteTitleNew) setIsNoteTitleNew(true);
     }, [currentNote.title]);
@@ -49,7 +52,6 @@ const MDInput = (props) => {
             })
             .then(() => {
                 if (isNoteTitleNew) {
-                    console.log('trigger update of titles');
                     context.setRefreshTitles(true);
                     setIsNoteTitleNew(false);
                 }
@@ -58,32 +60,13 @@ const MDInput = (props) => {
 
     return (
         <div id='md-input'>
-            <form
-                onSubmit={handleSubmit}
-            >
-                <label htmlFor='note-title'>Note Title: </label>
-                <input
-                    id='note-title'
-                    name='title'
-                    type='text'
-                    value={currentNote.title}
-                    onChange={handleChange}
-                />
-                <label htmlFor='note-text'>Text: </label>
-                <textarea
-                    id='note-text'
-                    name='text'
-                    value={currentNote.text}
-                    onChange={handleChange}
-                />
-                <input type='submit' value='Save'/>
-                {
-                    alertVisible
-                        ? <div id='save-alert'><p>Saved!</p></div>
-                        : ''
-                }
-            </form>
-
+            <MDInputForm
+                handleSubmit={handleSubmit}
+                handleChange={handleChange}
+                currentNote={currentNote}
+                alertVisible={alertVisible}
+                handleShowAlert={handleShowAlert}
+            />
         </div>
     );
 };
