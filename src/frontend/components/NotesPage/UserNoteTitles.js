@@ -7,7 +7,7 @@ import NoteTitlesHelper from './NoteTitlesHelper';
 const UserNoteTitles = (props) => {
     const [userNoteTitles, setUserNoteTitles] = useState([]); // TODO figure out why this isn't set immediately as []
     const context = useContext(appContext);
-    const { loggedInUser } = context;
+    const { loggedInUser, refreshTitles } = context;
 
     useEffect(() => {
         if (loggedInUser) {
@@ -15,6 +15,12 @@ const UserNoteTitles = (props) => {
                 .then(titles => setUserNoteTitles(titles));
         }
     }, [loggedInUser]);
+
+    useEffect(() => {
+        UserAdapter.listUserNoteTitles(loggedInUser)
+            .then(titles => setUserNoteTitles(titles))
+            .then(() => context.setRefreshTitles(false));
+    }, [refreshTitles]);
 
     return (
         <div id='user-note-titles'>

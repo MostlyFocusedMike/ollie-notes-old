@@ -4,6 +4,21 @@ class NoteAdapter {
             .then(r => r.json())
             .catch(console.log);
     }
+
+    static update(note) {
+        const postOptions = {
+            ...this.options,
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(note),
+        };
+        console.log('url: ', `${this.url}/${note.id}`);
+        return fetch(`${this.url}/${note.id}`, postOptions)
+            .then(r => r.json())
+            .catch(console.log);
+    }
 }
 
 NoteAdapter.url = '/api/v1/notes';
