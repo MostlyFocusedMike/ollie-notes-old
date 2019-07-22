@@ -28,14 +28,19 @@ div {
 }
 
 #notes-sidebar {
-    max-width: 12em;
+    max-width: 12rem;
 }
 
 #main-viewer {
     width: 100%;
+    display: flex;
 }
 
 #md-input {
+    width: 50%;
+}
+
+#extension-viewer {
     width: 50%;
 }
 
