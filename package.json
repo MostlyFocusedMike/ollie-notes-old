@@ -52,7 +52,7 @@
     "confidence": "4.x.x",
     "dotenv": "6.x.x",
     "glue": "6.x.x",
-    "handlebars": "^4.1.1",
+    "handlebars": "^4.7.7",
     "hapi": "^18.1.0",
     "hapi-auth-cookie": "^9.0.0",
     "hapi-swagger": "^9.4.2",
